@@ -57,7 +57,8 @@
 \DeclareFieldFormat[inarticle]{title}{\mkbibquote{#1\isdot}}
 \DeclareFieldFormat[inarticle,bookinarticle]{maintitle}{\mkbibquote{#1\isdot}}
 
-% Inheritance
+
+%4. Inheritance
 
 \DeclareDataInheritance{article}{bookinarticle,inarticle}{
 	\inherit{author}{bookauthor}% Il faudra modifier quand je saurais comment déclarer des nouveaux champs
@@ -65,4 +66,7 @@
 	\inherit{subtitle}{mainsubtitle}%
 }
 
+%5. Label name
+
+\DeclareLabelname[bookinarticle]{\field{author}}
 \endinput
