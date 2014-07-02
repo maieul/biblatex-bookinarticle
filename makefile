@@ -4,7 +4,7 @@ FILES = *.sty documentation   makefile README
 dist: all
 	rm -rf biblatex-bookinarticle
 	mkdir biblatex-bookinarticle
-	cp README *bbx *dbx *makefile biblatex-bookinarticle
+	cp README *sty *makefile biblatex-bookinarticle
 	mkdir biblatex-bookinarticle/documentation
 	cp documentation/*tex documentation/*bib documentation/*pdf documentation/makefile  biblatex-bookinarticle/documentation
 	$(RM) ../biblatex-bookinarticle.zip
