@@ -1,9 +1,7 @@
 all: *tex *bib
 	xelatex --shell-escape biblatex-bookinarticle.tex
+	biber biblatex-bookinarticle
 	xelatex --shell-escape biblatex-bookinarticle.tex
-	xelatex --shell-escape example.tex
-	biber example
-	xelatex --shell-escape example.tex
 
 clean:bookinarticle
 	$(MAKE) -C documentation clean
