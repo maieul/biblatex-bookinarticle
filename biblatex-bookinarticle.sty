@@ -12,9 +12,9 @@
 % 
 % The Current Maintainer of this work is Maïeul Rouquette
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{biblatex-bookinarticle}[2014/06/17 v1.0.0 Book in article with biblatex]
+\ProvidesPackage{biblatex-bookinarticle}[2014/10/09 v1.0.0 Book in article and book in incollection with biblatex]
 
-% 1. The driver
+% 1. The drivers
 \DeclareBibliographyDriver{inarticle}{%
   \usebibmacro{bibindex}%
   \usebibmacro{begentry}%
@@ -48,13 +48,69 @@
   \setunit{\bibpagerefpunct}\newblock
   \usebibmacro{pageref}%
   \usebibmacro{finentry}}
+
+\DeclareBibliographyDriver{inincollection}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{author/translator+others}%
+  \iffieldundef{author}{}{\setunit{\labelnamepunct}\newblock}%
+  \usebibmacro{title}%
+  \newunit
+  \printlist{language}%
+  \newunit\newblock
+  \usebibmacro{byauthor}%
+  \newunit\newblock
+  \usebibmacro{in:}%
+  \usebibmacro{bybookauthor}%
+  \setunit{\labelnamepunct}\newblock
+  \usebibmacro{booktitle}%
+  \newunit
+  \printlist{language}%
+  \newunit\newblock
+  \usebibmacro{byauthor}%
+  \newunit\newblock
+  \usebibmacro{in:}%
+  \usebibmacro{maintitle}%
+  \newunit\newblock
+  \usebibmacro{byeditor+others}%
+  \newunit\newblock
+  \printfield{edition}%
+  \newunit
+  \iffieldundef{maintitle}
+  {\printfield{volume}%
+  \printfield{part}}
+  {%
+    \newunit
+    \printfield{volumes}%
+    \newunit\newblock
+    \usebibmacro{series+number}%
+    \newunit\newblock
+    \printfield{note}%
+    \newunit\newblock
+    \usebibmacro{publisher+location+date}%
+    \newunit\newblock
+    \usebibmacro{chapter+pages}%
+    \newunit\newblock
+    \iftoggle{bbx:isbn}
+    {\printfield{isbn}}
+    {%
+      \newunit\newblock
+      \usebibmacro{doi+eprint+url}%
+      \newunit\newblock
+      \usebibmacro{addendum+pubstate}%
+  \setunit{\bibpagerefpunct}\newblock}%%
+  }%
+  \setunit{\bibpagerefpunct}\newblock
+  \usebibmacro{pageref}%
+  \usebibmacro{finentry}}
  
 % 2. The alias
 \DeclareBibliographyAlias{bookinarticle}{inarticle}
-
+\DeclareBibliographyAlias{bookinincollection}{inincollection}
 % 3. The formats
 
-\DeclareFieldFormat[inarticle]{title}{\mkbibquote{#1\isdot}}
+\DeclareFieldFormat[inarticle,inincollection]{title}{\mkbibquote{#1\isdot}}
+\DeclareFieldFormat[inincollection,bookinincollection]{booktitle}{\mkbibquote{#1\isdot}}
 \DeclareFieldFormat[inarticle,bookinarticle]{maintitle}{\mkbibquote{#1\isdot}}
 
 
@@ -66,7 +122,15 @@
 	\inherit{subtitle}{mainsubtitle}%
 }
 
+\DeclareDataInheritance{incollection}{bookinincollection,inincollection}{
+	\inherit{author}{bookauthor}% Il faudra modifier quand je saurais comment déclarer des nouveaux champs
+	\inherit{title}{booktitle}%
+	\inherit{subtitle}{booksubtitle}%
+	\inherit{booktitle}{maintitle}%
+	\inherit{booksubtitle}{mainsubtitle}%
+}
+
 %5. Label name
 
-\DeclareLabelname[bookinarticle]{\field{author}}
+\DeclareLabelname[bookinincollection,bookinarticle]{\field{author}}
 \endinput
