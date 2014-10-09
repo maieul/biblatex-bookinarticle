@@ -1,4 +1,4 @@
 biblatex-bookinarticle
 ======================
 
-Nouveau type biblatex: bookinarticle (et inarticle)
+New biblatex type for old book edited in article : @bookinarticle and @bookinincollection. 
