@@ -16,18 +16,19 @@
 \newcommand{\namebibstyle}[1]{\texttt{#1}}
 % Meta-datas
 \titlepage{%
-	title={Book in article with biblatex},
+	title={Book in @article and book in @inbook with biblatex},
 	subtitle={New data type},
 	email={maieul <at> maieul <dot> net},
 	author={Maïeul Rouquette},
-	revision={1.0.0},
-	date={02/07/2014},
+	revision={1.1.0},
+	date={09/10/2014},
 	url={https://github.com/maieul/biblatex-bookinarticle}}
 
 % biblatex
 \usepackage[citestyle=verbose]{biblatex}
 \usepackage{biblatex-bookinarticle}
 \addbibresource{example.bib}
+\addbibresource{example-bookinincollection.bib}
 
 \begin{document}
 
@@ -38,18 +39,23 @@
 
 In classical philology, it happens that ancient books are edited by modern scholar. So, when we refer to them, we have to not refer to the article, but, indeed, to the \emph{book which is in the article}.
 
-This package allows to create entry which's type is `bookinarticle`, and which are printed like this:
+This package allows to create entry which's type is \bibtype{bookinarticle}, and which are printed like this:
 
 \begin{quotation}
 \cite{BHG226e}
 \end{quotation}
 
+It also allows to create entry which's type is {bookinincollection}, for book edited in a article of a collection. 
+
+\begin{quotation}
+  \cite{AcTiteLatin}
+\end{quotation}
 
 \section{Use}
 
 \subsection{\bibtype{bookinarticle} Entry Type}
 
-A new entrytype is define: \bibtype{bookinarticle}. It use the standard fields of a \bibfield{article}, with those changes:
+A new entrytype is defined: \bibtype{bookinarticle}. It use the standard fields of a \bibfield{article}, with those changes:
 
 \begin{itemize}
 	\item \bibfield{author} means the author of the ancient book.
@@ -64,9 +70,31 @@ A new entrytype is define: \bibtype{bookinarticle}. It use the standard fields o
 \end{itemize}
 
 
+\subsection{\bibtype{bookinincollection} Entry Type}
+
+A new entrytype is defined: \bibtype{bookinincollection}. It use the standard fields of a \bibfield{inincollection}, with those changes:
+
+\begin{itemize}
+	\item \bibfield{author} means the author of the ancient book.
+	\item \textbf{\bibfield{bookauthor} means the author of the article where the book is edited, e.g. the modern editor of the book}.
+	\item \bibfield{booksubtitle} means the subtitle of the article where the book is edited.
+	\item \bibfield{booktitle} means the title of the article where the book is edited. 
+	\item \bibfield{maintitle} means the title of the collection were the article is published.
+	\item \bibfield{mainsubtitle} means the subtitle of the collection were the article is published.
+	\item \bibfield{pages} means the pages where the book is edited.
+	\item \bibfield{substitle} means the subtitle of the edited book.
+	\item \bibfield{title} means the title of the edited book. In our example \enquote{Mémoire sur le saint apôtre Barnabé}.
+
+
+\end{itemize}
+
+
 \subsection{Crossref's use}
 
-You can also use the Biber's crossref's facilities. The \bibfield{crossfield} of a \bibtype{bookinarticle} entry refering to a \bibtype{article} entry. The fields are inherited from \bibtype{article} following these rule:
+You can also use the Biber's crossref's facilities.
+
+\subsubsection{For \bibtype{bookinarticle}}
+The \bibfield{crossfield} of a \bibtype{bookinarticle} entry refering to a \bibtype{article} entry. The fields are inherited from \bibtype{article} following these rule:
 
 \begin{itemize}
 	\item \bibfield{author} becomes \bibfield{bookauthor}.
@@ -79,11 +107,38 @@ See the following example:
 
 \inputminted{latex}{example.bib}
 
+\subsubsection{For \bibtype{bookinincollection}}
 
+The \bibfield{crossfield} of a \bibtype{bookinincollection} entry refering to a \bibtype{inincollection} entry. The fields are inherited from \bibtype{inincollection} following these rule:
 
+\begin{itemize}
+	\item \bibfield{author} becomes \bibfield{bookauthor}.
+	\item \bibfield{booktitle} becomes \bibfield{maintitle}.
+	\item \bibfield{booksubtitle} becomes \bibfield{mainsubtitle}.
+	\item \bibfield{title} becomes \bibfield{booktitle}.
+	\item \bibfield{subtitle} becomes \bibfield{booksubtitle}.
+
+\end{itemize}
+
+See the following example:
+
+\inputminted{latex}{example-bookinincollection.bib}
 \subsection{\bibtype{inarticle} Entry Type}
 
 The package also provides a \bibtype{inarticle} Entry Type, to show a section of an article with its own title. It's like \bibtype{bookinarticle}, but the \bibtype{title} field is printed with italic, and not with quotation marks.
+
+
+\subsection{\bibtype{inincollection} Entry Type}
+
+The package also provides a \bibtype{inincollection} Entry Type, to show a section of an article with its own title. It's like \bibtype{bookinincollection}, but the \bibtype{title} field is printed with italic, and not with quotation marks.
+
+\subsection{Loading package}
+
+The package must be loaded after the \biblatex package:
+\begin{minted}{latex}
+\usepackage[…]{biblatex}
+\usepackage{biblatex-bookinarticle}
+\end{minted}
 
 \subsection{Loading package}
 
@@ -95,7 +150,7 @@ The package must be loaded after the \biblatex package:
 
 \subsection{Customization}
 
-The way where \bibtype{bookinarticle} are printed is derivated from the \emph{verbose} bibliographic style. You can customize it by overriding bibliographic macros or bibliographic driver. Look at the file \verb+biblatex-bookinarticle+.
+The ways which \bibtype{bookinarticle} and \bibtype{bookinincollection} are printed are derivated from the \emph{verbose} bibliographic style. You can customize it by overriding bibliographic macros or bibliographic driver. Look at the file \verb+biblatex-bookinarticle+.
 
 \section{Credits}
 
@@ -111,6 +166,9 @@ All issues can be submitted, in French or English, in the GitHub issues page\foo
 \begin{changelog}
 
 
+\begin{release}{1.1.0}{2014-10-09}
+\item Add \bibtype{bookinincollection} and \bibtype{inincollection}.
+\end{release}
 
 \begin{release}{1.0.0}{2014-07-02}
 \item First public release.
