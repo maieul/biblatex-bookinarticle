@@ -12,14 +12,14 @@
 % 
 % The Current Maintainer of this work is Maïeul Rouquette
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{biblatex-bookinarticle}[2014/10/09 v1.0.0 Book in article and book in incollection with biblatex]
+\ProvidesPackage{biblatex-bookinarticle}[2014/11/03 v1.1.1 Book in article and book in incollection with biblatex]
 
 % 1. The drivers
 \DeclareBibliographyDriver{inarticle}{%
   \usebibmacro{bibindex}%
   \usebibmacro{begentry}%
   \usebibmacro{author/translator+others}%
-  \iffieldundef{author}{}{\setunit{\labelnamepunct}\newblock}%
+  \setunit{\labelnamepunct}\newblock%
   \usebibmacro{title}%
   \newunit
   \printlist{language}%
@@ -53,7 +53,7 @@
   \usebibmacro{bibindex}%
   \usebibmacro{begentry}%
   \usebibmacro{author/translator+others}%
-  \iffieldundef{author}{}{\setunit{\labelnamepunct}\newblock}%
+  \setunit{\labelnamepunct}\newblock%
   \usebibmacro{title}%
   \newunit
   \printlist{language}%
@@ -117,13 +117,13 @@
 %4. Inheritance
 
 \DeclareDataInheritance{article}{bookinarticle,inarticle}{
-	\inherit{author}{bookauthor}% Il faudra modifier quand je saurais comment déclarer des nouveaux champs
+	\inherit{author}{bookauthor}% 
 	\inherit{title}{maintitle}%
 	\inherit{subtitle}{mainsubtitle}%
 }
 
 \DeclareDataInheritance{incollection}{bookinincollection,inincollection}{
-	\inherit{author}{bookauthor}% Il faudra modifier quand je saurais comment déclarer des nouveaux champs
+	\inherit{author}{bookauthor}%
 	\inherit{title}{booktitle}%
 	\inherit{subtitle}{booksubtitle}%
 	\inherit{booktitle}{maintitle}%
