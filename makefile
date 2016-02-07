@@ -6,7 +6,7 @@ dist: all
 	mkdir biblatex-bookinarticle
 	ln README *sty *makefile biblatex-bookinarticle
 	mkdir biblatex-bookinarticle/documentation
-	ln documentation/*tex documentation/*bib documentation/*pdf documentation/makefile  biblatex-bookinarticle/documentation
+	ln documentation/*tex documentation/*bib documentation/*pdf documentation/*.dot documentation/makefile  biblatex-bookinarticle/documentation
 	$(RM) ../biblatex-bookinarticle.zip
 	zip -r ../biblatex-bookinarticle.zip biblatex-bookinarticle
 
