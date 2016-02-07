@@ -15,5 +15,5 @@ clean:
 	$(MAKE) -C documentation clean
 	@$(RM) *.pdf *.toc *.aux *.out *.fdb_latexmk *.log *.bbl *.bcf *.blg *run.xml *.synctex.gz*
 
-all:  documentation/biblatex-bookinarticle.tex documentation/example-bookinarticle.bib
+all:  documentation/biblatex-bookinarticle.tex documentation/example-bookinarticle.bib documentation/example-bookinincollection.bib
 	$(MAKE) -C documentation all
