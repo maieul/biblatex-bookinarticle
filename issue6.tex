@@ -1,0 +1,53 @@
+
+% !TeX program = xelatex
+% !TeX encoding = UTF-8
+% !TeX spellcheck = it_IT
+
+\begin{filecontents}{issue6.bib}
+@article{Dyck1985,
+  author = {Dyck, Andrew R.},
+  journal =    {Harvard Studies in Classical Philology},
+  pages =      {55-99},
+  volume =     {89},
+  year =       {1985},
+  title =  {Notes on Platonic lexicography in antiquity},
+}
+
+@Bookinarticle{Boethus1985,
+  crossref  = {Dyck1985},
+  author =     {Boethus},
+  pages =      {75-84},
+  title =      {Lexicorum platonicorum fragmenta},
+}
+\end{filecontents}
+
+\documentclass[11pt,a4paper]{book}
+\usepackage{fontspec}
+    \setmainfont{Linux Libertine O}
+
+\usepackage{polyglossia}
+    \setmainlanguage[babelshorthands=true]{italian}
+
+\usepackage[%
+    style=philosophy-classic,%
+    backend=biber,%
+    dashed=true,%
+    url = false,%
+    isbn = false,%
+    firstinits=true,%
+    uniquename=init,%
+    ]{biblatex}
+\usepackage{biblatex-bookinarticle}
+\bibliography{issue6}
+
+\begin{document}
+\nocite{*}
+\printbibliography
+
+\newpage
+\nocite{*}
+\printbiblist[%
+    keyword=auctores,%
+    title={Auctores in apparatu frequentius laudati}%
+    ]{shorthand}
+\end{document}
