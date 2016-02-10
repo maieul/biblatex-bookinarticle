@@ -17,12 +17,12 @@
 \newcommand{\namebibstyle}[1]{\texttt{#1}}
 % Meta-datas
 \titlepage{%
-	title={Book in @article and book in @incollection with biblatex},
+	title={Book in @article, in @incollection and in @phdthesis with biblatex},
 	subtitle={New data types},
 	email={maieul <at> maieul <dot> net},
 	author={Maïeul Rouquette},
-	revision={1.2.0a},
-	date={07/02/2016},
+	revision={1.3.0},
+	date={10/02/2016},
 	url={https://github.com/maieul/biblatex-bookinarticle}}
 
 % biblatex
@@ -30,6 +30,7 @@
 \usepackage{biblatex-bookinarticle}
 \addbibresource{example-bookinarticle.bib}
 \addbibresource{example-bookinincollection.bib}
+\addbibresource{example-bookinphdthesis.bib}
 \begin{document}
 
 \printtitlepage
@@ -45,10 +46,11 @@ This package allows to create entry which's type is \bibtype{bookinarticle}, and
 \cite{BHG226e}
 \end{quotation}
 
-It also allows to create entry which's type is \bibtype{bookinincollection}, for book edited in a article of a collection. 
+It also allows to create entry which's type is \bibtype{bookinincollection}, for book edited in a article of a collection, and entry which's type is \bibtype{bookinphdthesis}, for book edited in a phd thesis.
 
 \begin{quotation}
   \cite{AcTiteLatin}
+  \cite{phd:2015}
 \end{quotation}
 
 \section{Use}
@@ -88,6 +90,21 @@ A new entrytype is defined: \bibtype{bookinincollection}. It use the standard fi
 
 \end{itemize}
 
+\subsection{\bibtype{bookinphdthesis} Entry Type}
+
+A new entrytype is defined: \bibtype{bookinphdthesis}. It use the standard fields of a \bibfield{phdthesis}, with those changes:
+
+\begin{itemize}
+	\item \bibfield{author} means the author of the ancient book.
+	\item \textbf{\bibfield{bookauthor} means the author of the phd thesis where the book is edited, e.g. the modern editor of the book}.
+	\item \bibfield{mainsubtitle} means the subtitle of the phd thesis where the book is edited.
+	\item \bibfield{maintitle} means the title of the phd thesis where the book is edited. In our example \enquote{A Nice Title}.
+	\item \bibfield{pages} means the pages where the book is edited.
+	\item \bibfield{subtitle} means the subtitle of the edited book.
+	\item \bibfield{title} means the title of the edited book. In our example \enquote{The Ancient Text}.
+
+
+\end{itemize}
 
 \subsection{Crossref's use}
 
@@ -123,6 +140,21 @@ The \bibfield{crossfield} of a \bibtype{bookinincollection} entry refering to a 
 See the following example:
 
 \inputminted[breaklines]{latex}{example-bookinincollection.bib}
+
+\subsubsection{For \bibtype{bookinarticle}}
+The \bibfield{crossfield} of a \bibtype{bookinarticle} entry refering to a \bibtype{article} entry. The fields are inherited from \bibtype{article} following these rule:
+
+\begin{itemize}
+	\item \bibfield{author} becomes \bibfield{bookauthor}.
+	\item \bibfield{title} becomes \bibfield{maintitle}.
+	\item \bibfield{subtitle} becomes \bibfield{maisubtitle}.
+
+\end{itemize}
+
+See the following example:
+
+\inputminted[breaklines]{latex}{example-bookinphdthesis.bib}
+
 \subsubsection{Summary}
 The graphs~\ref{crossref} summaries the use of cross-referencing.
 
@@ -132,6 +164,7 @@ The graphs~\ref{crossref} summaries the use of cross-referencing.
 \label{crossref}
 \caption{Using crossref's mechanism with \emph{biblatex-bookinarticle}}
 \end{figure}
+
 \subsection{\bibtype{inarticle} Entry Type}
 
 The package also provides a \bibtype{inarticle} Entry Type, to show a section of an article with its own title. It's like \bibtype{bookinarticle}, but the \bibtype{title} field is printed with italic, and not with quotation marks.
@@ -141,6 +174,9 @@ The package also provides a \bibtype{inarticle} Entry Type, to show a section of
 
 The package also provides a \bibtype{inincollection} Entry Type, to show a section of an article with its own title. It's like \bibtype{bookinincollection}, but the \bibtype{title} field is printed with italic, and not with quotation marks.
 
+\subsection{\bibtype{inphdthesis} Entry Type}
+
+The package also provides a \bibtype{inphdthesis} Entry Type, to show a section of an phd thesis with its own title. It's like \bibtype{bookinphdthesis}, but the \bibtype{title} field is printed with italic, and not with quotation marks.
 
 
 \subsection{Loading package}
@@ -168,6 +204,9 @@ All issues can be submitted, in French or English, in the GitHub issues page\foo
 
 \begin{changelog}
 
+\begin{release}{1.3.0}{2016-02-10}
+\item Add \bibtype{bookinphdthesis} and \bibtype{inphdthesis}.
+\end{release}
 
 \begin{release}{1.2.0a}{2016-02-07}
 \item Fix handbook.
