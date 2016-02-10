@@ -106,8 +106,8 @@ A new entrytype is defined: \bibtype{bookinthesis}. It use the standard fields o
 \begin{itemize}
 	\item \bibfield{author} means the author of the ancient book.
 	\item \textbf{\bibfield{bookauthor} means the author of the thesis where the book is edited, e.g. the modern editor of the book}.
-	\item \bibfield{mainsubtitle} means the subtitle of the thesis where the book is edited.
-	\item \bibfield{maintitle} means the title of the thesis where the book is edited. In our example \enquote{A Nice Title}.
+	\item \bibfield{booksubtitle} means the subtitle of the thesis where the book is edited.
+	\item \bibfield{booktitle} means the title of the thesis where the book is edited. In our example \enquote{A Nice Title}.
 	\item \bibfield{pages} means the pages where the book is edited.
 	\item \bibfield{subtitle} means the subtitle of the edited book.
 	\item \bibfield{title} means the title of the edited book. In our example \enquote{The Ancient Text}.
@@ -150,13 +150,13 @@ See the following example:
 
 \inputminted[breaklines]{latex}{example-bookinincollection.bib}
 
-\subsubsection{For \bibtype{bookinarticle}}
-The \bibfield{crossfield} of a \bibtype{bookinarticle} entry refering to a \bibtype{article} entry. The fields are inherited from \bibtype{article} following these rule:
+\subsubsection{For \bibtype{bookinthesis}}
+The \bibfield{crossfield} of a \bibtype{bookinthesis} entry refering to a \bibtype{article} entry. The fields are inherited from \bibtype{thesis} following these rule:
 
 \begin{itemize}
 	\item \bibfield{author} becomes \bibfield{bookauthor}.
-	\item \bibfield{title} becomes \bibfield{maintitle}.
-	\item \bibfield{subtitle} becomes \bibfield{maisubtitle}.
+	\item \bibfield{title} becomes \bibfield{booktitle}.
+	\item \bibfield{subtitle} becomes \bibfield{subtitle}.
 
 \end{itemize}
 
