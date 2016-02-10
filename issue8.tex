@@ -4,14 +4,15 @@
 \usepackage{biblatex-bookinarticle}
 \usepackage{filecontents}
 \begin{filecontents}{\jobname.bib}
-@phdthesis{phd:2015,
+@thesis{phd:2015,
     Address = {Paris},
     Author = {John Doe},
     Title = {A Nice Title},
+    Type = {thesis},
     Subtitle = {A Very Nice Subtitle},
     School = {Sorbonne},
     Year = {2015}}
-@bookinphd{inphd:2015,
+@bookinthesis{inphd:2015,
     Author = {Aristotle},
     Title = {The Ancient Text},
     Crossref = {phd:2015},
