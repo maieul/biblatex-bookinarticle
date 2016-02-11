@@ -38,7 +38,7 @@
 
 \section{Introduction}
 
-In classical philology, it happens that ancient books are edited by modern scholar. So, when we refer to them, we have to not refer to the article, but, indeed, to the \emph{book which is in the article}.
+In classical philology, it happens that ancient books are edited by modern scholar in article. So, when we refer to them, we have to not refer to the article, but, indeed, to the \emph{book which is in the article}.
 
 This package allows to create entry which's type is \bibtype{bookinarticle}, and which are printed like this:
 
@@ -46,19 +46,19 @@ This package allows to create entry which's type is \bibtype{bookinarticle}, and
 \cite{BHG226e}
 \end{quotation}
 
-It also allows to create entry which's type is \bibtype{bookinincollection}, for book edited in a article of a collection.
+It also allows to create entry which's type is \bibtype{bookinincollection}, for book edited in a article of a collection:
 
 \begin{quotation}
   \cite{AcTiteLatin}
 \end{quotation}
 
-It also allows to create entry which's type is \bibtype{bookinthesis}, for book edited in a thesis. 
+It also allows to create entry which's type is \bibtype{bookinthesis}, for book edited in a thesis:
 
 \begin{quotation}
   \cite{inphd:2015}
 \end{quotation}
 
-As for the standard \bibtype{thesis} entry type, a \bibtype{bookinthesis} can use the \bibfield{type} field which value can be \enquote{mathesis}, \enquote{phdthesis} or \enquote{candthesis}
+As for the standard \bibtype{thesis} entry type, a \bibtype{bookinthesis} can use the \bibfield{type} field which value can be \enquote{mathesis}, \enquote{phdthesis} or \enquote{candthesis}.
 
 The package also provides \bibtype{bookinmathesis} and \bibtype{bookinphdthesis}, similar to \bibtype{bookinthesis} but the the \bibfield{type} already defined.
 
@@ -66,7 +66,7 @@ The package also provides \bibtype{bookinmathesis} and \bibtype{bookinphdthesis}
 
 \subsection{\bibtype{bookinarticle} Entry Type}
 
-A new entrytype is defined: \bibtype{bookinarticle}. It use the standard fields of a \bibfield{article}, with those changes:
+A new entrytype is defined: \bibtype{bookinarticle}. It uses the standard fields of a \bibfield{article}, with these changes:
 
 \begin{itemize}
 	\item \bibfield{author} means the author of the ancient book.
@@ -83,7 +83,7 @@ A new entrytype is defined: \bibtype{bookinarticle}. It use the standard fields 
 
 \subsection{\bibtype{bookinincollection} Entry Type}
 
-A new entrytype is defined: \bibtype{bookinincollection}. It use the standard fields of a \bibfield{inincollection}, with those changes:
+A new entrytype is defined: \bibtype{bookinincollection}. It uses the standard fields of a \bibfield{inincollection}, with these changes:
 
 \begin{itemize}
 	\item \bibfield{author} means the author of the ancient book.
@@ -101,7 +101,7 @@ A new entrytype is defined: \bibtype{bookinincollection}. It use the standard fi
 
 \subsection{\bibtype{bookinthesis} Entry Type}
 
-A new entrytype is defined: \bibtype{bookinthesis}. It use the standard fields of a \bibfield{thesis}, with those changes:
+A new entrytype is defined: \bibtype{bookinthesis}. It uses the standard fields of a \bibfield{thesis}, with these changes:
 
 \begin{itemize}
 	\item \bibfield{author} means the author of the ancient book.
@@ -120,7 +120,7 @@ A new entrytype is defined: \bibtype{bookinthesis}. It use the standard fields o
 You can also use the Biber's crossref's facilities.
 
 \subsubsection{For \bibtype{bookinarticle}}
-The \bibfield{crossfield} of a \bibtype{bookinarticle} entry refering to a \bibtype{article} entry. The fields are inherited from \bibtype{article} following these rule:
+The \bibfield{crossfield} of a \bibtype{bookinarticle} entry refers to a \bibtype{article} entry. The fields are inherited from \bibtype{article} following these rules:
 
 \begin{itemize}
 	\item \bibfield{author} becomes \bibfield{bookauthor}.
@@ -135,7 +135,7 @@ See the following example:
 
 \subsubsection{For \bibtype{bookinincollection}}
 
-The \bibfield{crossfield} of a \bibtype{bookinincollection} entry refering to a \bibtype{inincollection} entry. The fields are inherited from \bibtype{inincollection} following these rule:
+The \bibfield{crossfield} of a \bibtype{bookinincollection} entry refers to a \bibtype{inincollection} entry. The fields are inherited from \bibtype{inincollection} following these rules:
 
 \begin{itemize}
 	\item \bibfield{author} becomes \bibfield{bookauthor}.
@@ -151,7 +151,7 @@ See the following example:
 \inputminted[breaklines]{latex}{example-bookinincollection.bib}
 
 \subsubsection{For \bibtype{bookinthesis}}
-The \bibfield{crossfield} of a \bibtype{bookinthesis} entry refering to a \bibtype{article} entry. The fields are inherited from \bibtype{thesis} following these rule:
+The \bibfield{crossfield} of a \bibtype{bookinthesis} entry refers to a \bibtype{article} entry. The fields are inherited from \bibtype{thesis} following these rules:
 
 \begin{itemize}
 	\item \bibfield{author} becomes \bibfield{bookauthor}.
@@ -174,18 +174,18 @@ The graphs~\ref{crossref} summaries the use of cross-referencing.
 \caption{Using crossref's mechanism with \emph{biblatex-bookinarticle}}
 \end{figure}
 
-\subsection{\bibtype{inarticle} Entry Type}
+\subsection{\bibtype{inarticle} entry type}
 
-The package also provides a \bibtype{inarticle} Entry Type, to show a section of an article with its own title. It's like \bibtype{bookinarticle}, but the \bibtype{title} field is printed with italic, and not with quotation marks.
+The package also provides a \bibtype{inarticle} entry type, to show a section of an article with its own title. It is like \bibtype{bookinarticle}, but the \bibtype{title} field is printed with italic, and not with quotation marks.
 
 
 \subsection{\bibtype{inincollection} Entry Type}
 
-The package also provides a \bibtype{inincollection} Entry Type, to show a section of an article with its own title. It's like \bibtype{bookinincollection}, but the \bibtype{title} field is printed with italic, and not with quotation marks.
+The package also provides a \bibtype{inincollection} entry type, to show a section of an article of a collection with its own title. It is like \bibtype{bookinincollection}, but the \bibtype{title} field is printed with italic, and not with quotation marks.
 
 \subsection{\bibtype{inthesis} Entry Type}
 
-The package also provides a \bibtype{inthesis} Entry Type, to show a section of an phd thesis with its own title. It's like \bibtype{bookinthesis}, but the \bibtype{title} field is printed with italic, and not with quotation marks.
+The package also provides a \bibtype{inthesis} entry type, to show a section of a thesis with its own title. It is like \bibtype{bookinthesis}, but the \bibtype{title} field is printed with italic, and not with quotation marks.
 
 The package also provides \bibtype{inphdthesis} and \bibtype{inmathesis}, similar to \bibtype{thesis}, with the \bibfield{type} field already defined.
 
@@ -200,7 +200,7 @@ The package must be loaded after the \biblatex package:
 
 \subsection{Customization}
 
-The ways which \bibtype{bookinarticle}, \bibtype{bookinincollection} and \bibtype{bookinthesis} are printed are derivated from the \emph{verbose} bibliographic style. You can customize it by overriding bibliographic macros or bibliographic driver. Look at the file \verb+biblatex-bookinarticle+.
+The ways which \bibtype{bookinarticle}, \bibtype{bookinincollection} and \bibtype{bookinthesis} are printed are derivated from the \emph{verbose} bibliographic style. You can customize it by overriding bibliographic macros or bibliographic drivers. Look at the file \verb+biblatex-bookinarticle.sty+.
 
 \section{Credits}
 
