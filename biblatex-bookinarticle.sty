@@ -12,7 +12,7 @@
 % 
 % The Current Maintainer of this work is Maïeul Rouquette
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{biblatex-bookinarticle}[2016/02/07 v1.2.0a Book in article and book in incollection with biblatex]
+\ProvidesPackage{biblatex-bookinarticle}[2016/02/11 v1.3.0 Book in article, in incollection and in thesis with biblatex]
 
 % 1. The drivers
 \DeclareBibliographyDriver{inarticle}{%
@@ -103,14 +103,77 @@
   \setunit{\bibpagerefpunct}\newblock
   \usebibmacro{pageref}%
   \usebibmacro{finentry}}
- 
-% 2. The alias
+
+
+\DeclareBibliographyDriver{inthesis}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{author}%
+  \setunit{\labelnamepunct}\newblock
+  \usebibmacro{title}%
+  \newunit
+  \printlist{language}%
+  \newunit\newblock
+  \usebibmacro{byauthor}%
+  \newunit\newblock
+  \usebibmacro{in:}%
+  \usebibmacro{bybookauthor}%
+  \setunit{\labelnamepunct}\newblock
+  \usebibmacro{booktitle}%
+  \newunit\newblock
+  \printfield{note}%
+  \newunit\newblock
+  \printfield{type}%
+  \newunit
+  \usebibmacro{institution+location+date}%
+  \newunit\newblock
+  \usebibmacro{chapter+pages}%
+  \newunit
+  \printfield{pagetotal}%
+  \newunit\newblock
+  \iftoggle{bbx:isbn}
+    {\printfield{isbn}}
+    {}%
+  \newunit\newblock
+  \usebibmacro{doi+eprint+url}%
+  \newunit\newblock
+  \usebibmacro{addendum+pubstate}%
+  \setunit{\bibpagerefpunct}\newblock
+  \usebibmacro{pageref}%
+  \newunit\newblock
+  \iftoggle{bbx:related}
+    {\usebibmacro{related:init}%
+     \usebibmacro{related}}
+    {}%
+  \usebibmacro{finentry}}
+
+% 2. The alias and sourcemaps
 \DeclareBibliographyAlias{bookinarticle}{inarticle}
 \DeclareBibliographyAlias{bookinincollection}{inincollection}
+\DeclareBibliographyAlias{bookinthesis}{inthesis}
+
+\DeclareDriverSourcemap[datatype=bibtex]{
+  \map{
+    \step[typesource=inmastersthesis, typetarget=inthesis, final]
+    \step[fieldset=type,            fieldvalue=mathesis]
+  }
+  \map{
+    \step[typesource=inphdthesis, typetarget=inthesis, final]
+    \step[fieldset=type,            fieldvalue=phdthesis]
+  }
+  \map{
+    \step[typesource=bookinmastersthesis, typetarget=inthesis, final]
+    \step[fieldset=type,            fieldvalue=mathesis]
+  }
+  \map{
+    \step[typesource=bookinphdthesis, typetarget=inthesis, final]
+    \step[fieldset=type,            fieldvalue=phdthesis]
+  }
+}
 % 3. The formats
 
-\DeclareFieldFormat[inarticle,inincollection]{title}{\mkbibquote{#1\isdot}}
-\DeclareFieldFormat[inincollection,bookinincollection]{booktitle}{\mkbibquote{#1\isdot}}
+\DeclareFieldFormat[inarticle,inincollection,inthesis]{title}{\mkbibquote{#1\isdot}}
+\DeclareFieldFormat[inincollection,bookinincollection,inthesis,bookinthesis]{booktitle}{\mkbibquote{#1\isdot}}
 \DeclareFieldFormat[inarticle,bookinarticle]{maintitle}{\mkbibquote{#1\isdot}}
 
 % Inspired from biblatex.def
@@ -129,6 +192,7 @@
 	\inherit{subtitle}{mainsubtitle}%
 }
 
+
 \DeclareDataInheritance{incollection}{bookinincollection,inincollection}{
 	\inherit{author}{bookauthor}%
 	\inherit{title}{booktitle}%
@@ -137,9 +201,22 @@
 	\inherit{booksubtitle}{mainsubtitle}%
 }
 
+
+\DeclareDataInheritance{thesis,phdthesis,mathesis}{bookinthesis,inthesis,inphdthesis,inmathesis,bookinphdthesis,bookinmathesis}{
+	\inherit{author}{bookauthor}% 
+	\inherit{title}{booktitle}%
+	\inherit{subtitle}{booksubtitle}%
+}
+
+
 %5. Label name
 
-\DeclareLabelname[bookinincollection,bookinarticle]{
+\DeclareLabelname[bookinincollection,%
+  bookinarticle,%
+  bookinthesis,%
+  bookinphdthesis,%
+  bookinmathesis
+  ]{%
   \field{shortauthor}
   \field{author}
 }

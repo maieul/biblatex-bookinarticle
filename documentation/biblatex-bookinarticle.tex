@@ -17,12 +17,12 @@
 \newcommand{\namebibstyle}[1]{\texttt{#1}}
 % Meta-datas
 \titlepage{%
-	title={Book in @article and book in @incollection with biblatex},
+	title={Book in @article, in @incollection and in @thesis with biblatex},
 	subtitle={New data types},
 	email={maieul <at> maieul <dot> net},
 	author={Maïeul Rouquette},
-	revision={1.2.0a},
-	date={07/02/2016},
+	revision={1.3.0},
+	date={11/02/2016},
 	url={https://github.com/maieul/biblatex-bookinarticle}}
 
 % biblatex
@@ -30,6 +30,7 @@
 \usepackage{biblatex-bookinarticle}
 \addbibresource{example-bookinarticle.bib}
 \addbibresource{example-bookinincollection.bib}
+\addbibresource{example-bookinthesis.bib}
 \begin{document}
 
 \printtitlepage
@@ -45,11 +46,21 @@ This package allows to create entry which's type is \bibtype{bookinarticle}, and
 \cite{BHG226e}
 \end{quotation}
 
-It also allows to create entry which's type is \bibtype{bookinincollection}, for book edited in a article of a collection. 
+It also allows to create entry which's type is \bibtype{bookinincollection}, for book edited in a article of a collection.
 
 \begin{quotation}
   \cite{AcTiteLatin}
 \end{quotation}
+
+It also allows to create entry which's type is \bibtype{bookinthesis}, for book edited in a thesis. 
+
+\begin{quotation}
+  \cite{inphd:2015}
+\end{quotation}
+
+As for the standard \bibtype{thesis} entry type, a \bibtype{bookinthesis} can use the \bibfield{type} field which value can be \enquote{mathesis}, \enquote{phdthesis} or \enquote{candthesis}
+
+The package also provides \bibtype{bookinmathesis} and \bibtype{bookinphdthesis}, similar to \bibtype{bookinthesis} but the the \bibfield{type} already defined.
 
 \section{Use}
 
@@ -88,6 +99,21 @@ A new entrytype is defined: \bibtype{bookinincollection}. It use the standard fi
 
 \end{itemize}
 
+\subsection{\bibtype{bookinthesis} Entry Type}
+
+A new entrytype is defined: \bibtype{bookinthesis}. It use the standard fields of a \bibfield{thesis}, with those changes:
+
+\begin{itemize}
+	\item \bibfield{author} means the author of the ancient book.
+	\item \textbf{\bibfield{bookauthor} means the author of the thesis where the book is edited, e.g. the modern editor of the book}.
+	\item \bibfield{booksubtitle} means the subtitle of the thesis where the book is edited.
+	\item \bibfield{booktitle} means the title of the thesis where the book is edited. In our example \enquote{A Nice Title}.
+	\item \bibfield{pages} means the pages where the book is edited.
+	\item \bibfield{subtitle} means the subtitle of the edited book.
+	\item \bibfield{title} means the title of the edited book. In our example \enquote{The Ancient Text}.
+
+
+\end{itemize}
 
 \subsection{Crossref's use}
 
@@ -99,7 +125,7 @@ The \bibfield{crossfield} of a \bibtype{bookinarticle} entry refering to a \bibt
 \begin{itemize}
 	\item \bibfield{author} becomes \bibfield{bookauthor}.
 	\item \bibfield{title} becomes \bibfield{maintitle}.
-	\item \bibfield{subtitle} becomes \bibfield{maisubtitle}.
+	\item \bibfield{subtitle} becomes \bibfield{mainsubtitle}.
 
 \end{itemize}
 
@@ -123,6 +149,21 @@ The \bibfield{crossfield} of a \bibtype{bookinincollection} entry refering to a 
 See the following example:
 
 \inputminted[breaklines]{latex}{example-bookinincollection.bib}
+
+\subsubsection{For \bibtype{bookinthesis}}
+The \bibfield{crossfield} of a \bibtype{bookinthesis} entry refering to a \bibtype{article} entry. The fields are inherited from \bibtype{thesis} following these rule:
+
+\begin{itemize}
+	\item \bibfield{author} becomes \bibfield{bookauthor}.
+	\item \bibfield{title} becomes \bibfield{booktitle}.
+	\item \bibfield{subtitle} becomes \bibfield{subtitle}.
+
+\end{itemize}
+
+See the following example:
+
+\inputminted[breaklines]{latex}{example-bookinthesis.bib}
+
 \subsubsection{Summary}
 The graphs~\ref{crossref} summaries the use of cross-referencing.
 
@@ -132,6 +173,7 @@ The graphs~\ref{crossref} summaries the use of cross-referencing.
 \label{crossref}
 \caption{Using crossref's mechanism with \emph{biblatex-bookinarticle}}
 \end{figure}
+
 \subsection{\bibtype{inarticle} Entry Type}
 
 The package also provides a \bibtype{inarticle} Entry Type, to show a section of an article with its own title. It's like \bibtype{bookinarticle}, but the \bibtype{title} field is printed with italic, and not with quotation marks.
@@ -141,6 +183,11 @@ The package also provides a \bibtype{inarticle} Entry Type, to show a section of
 
 The package also provides a \bibtype{inincollection} Entry Type, to show a section of an article with its own title. It's like \bibtype{bookinincollection}, but the \bibtype{title} field is printed with italic, and not with quotation marks.
 
+\subsection{\bibtype{inthesis} Entry Type}
+
+The package also provides a \bibtype{inthesis} Entry Type, to show a section of an phd thesis with its own title. It's like \bibtype{bookinthesis}, but the \bibtype{title} field is printed with italic, and not with quotation marks.
+
+The package also provides \bibtype{inphdthesis} and \bibtype{inmathesis}, similar to \bibtype{thesis}, with the \bibfield{type} field already defined.
 
 
 \subsection{Loading package}
@@ -153,7 +200,7 @@ The package must be loaded after the \biblatex package:
 
 \subsection{Customization}
 
-The ways which \bibtype{bookinarticle} and \bibtype{bookinincollection} are printed are derivated from the \emph{verbose} bibliographic style. You can customize it by overriding bibliographic macros or bibliographic driver. Look at the file \verb+biblatex-bookinarticle+.
+The ways which \bibtype{bookinarticle}, \bibtype{bookinincollection} and \bibtype{bookinthesis} are printed are derivated from the \emph{verbose} bibliographic style. You can customize it by overriding bibliographic macros or bibliographic driver. Look at the file \verb+biblatex-bookinarticle+.
 
 \section{Credits}
 
@@ -168,6 +215,9 @@ All issues can be submitted, in French or English, in the GitHub issues page\foo
 
 \begin{changelog}
 
+\begin{release}{1.3.0}{2016-02-11}
+\item Add \bibtype{bookinthesis} and \bibtype{inthesis} and related.
+\end{release}
 
 \begin{release}{1.2.0a}{2016-02-07}
 \item Fix handbook.
