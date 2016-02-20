@@ -17,7 +17,7 @@ digraph Biberdata {
     "section0/AcTiteLatin/bookauthor" [ label="BOOKAUTHOR" ]
     "section0/AcTiteLatin/booktitle" [ label="BOOKTITLE" ]
     "section0/AcTiteLatin/crossref" [ label="CROSSREF" ]
-    "section0/AcTiteLatin/editor" [ label="EDITOR" ]
+    "section0/AcTiteLatin/editor" [fillcolor="#005500", label="EDITOR" ]
     "section0/AcTiteLatin/maineditor" [fillcolor="#00ff00", label="MAINEDITOR" ]
     "section0/AcTiteLatin/location" [ label="LOCATION" ]
     "section0/AcTiteLatin/maintitle" [ label="MAINTITLE" ]
