@@ -105,6 +105,68 @@
   \usebibmacro{finentry}}
 
 
+\DeclareBibliographyDriver{inproceedings}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{author/translator+others}%
+  \setunit{\labelnamepunct}\newblock%
+  \usebibmacro{title}%
+  \newunit
+  \printlist{language}%
+  \newunit\newblock
+  \usebibmacro{byauthor}%
+  \newunit\newblock
+  \usebibmacro{in:}%  
+  \usebibmacro{bybookauthor}%
+  \setunit{\labelnamepunct}\newblock
+  \usebibmacro{booktitle}%
+  \newunit
+  \printlist{language}%
+  \newunit\newblock
+  \usebibmacro{byauthor}%
+  \newunit\newblock
+  \usebibmacro{in:}%
+  \usebibmacro{maintitle}%
+  \newunit\newblock
+  \usebibmacro{event+venue+date}%
+  \newunit\newblock
+  \usebibmacro{byeditor+others}%
+  \newunit\newblock
+  \iffieldundef{maintitle}
+    {\printfield{volume}%
+     \printfield{part}}
+    {}%
+  \newunit
+  \printfield{volumes}%
+  \newunit\newblock
+  \usebibmacro{series+number}%
+  \newunit\newblock
+  \printfield{note}%
+  \newunit\newblock
+  \printlist{organization}%
+  \newunit
+  \usebibmacro{publisher+location+date}%
+  \newunit\newblock
+  \usebibmacro{chapter+pages}%
+  \newunit\newblock
+  \iftoggle{bbx:isbn}
+    {\printfield{isbn}}
+    {}%
+  \newunit\newblock
+  \usebibmacro{doi+eprint+url}%
+  \newunit\newblock
+  \usebibmacro{addendum+pubstate}%
+  \setunit{\bibpagerefpunct}\newblock
+  \usebibmacro{pageref}%
+  \newunit\newblock
+  \iftoggle{bbx:related}
+    {\usebibmacro{related:init}%
+     \usebibmacro{related}}
+    {}%
+  \usebibmacro{finentry}}
+
+
+
 \DeclareBibliographyDriver{inthesis}{%
   \usebibmacro{bibindex}%
   \usebibmacro{begentry}%
@@ -148,8 +210,10 @@
   \usebibmacro{finentry}}
 
 % 2. The alias and sourcemaps
+
 \DeclareBibliographyAlias{bookinarticle}{inarticle}
 \DeclareBibliographyAlias{bookinincollection}{inincollection}
+\DeclareBibliographyAlias{bookininproceedings}{inproceedings}
 \DeclareBibliographyAlias{bookinthesis}{inthesis}
 
 \DeclareDriverSourcemap[datatype=bibtex]{
@@ -172,8 +236,19 @@
 }
 % 3. The formats
 
-\DeclareFieldFormat[inarticle,inincollection,inthesis]{title}{\mkbibquote{#1\isdot}}
-\DeclareFieldFormat[inincollection,bookinincollection,inthesis,bookinthesis]{booktitle}{\mkbibquote{#1\isdot}}
+\DeclareFieldFormat[%
+  inarticle,%
+  inincollection,%
+  ininproceedings%
+  inthesis,%
+  ]{title}{\mkbibquote{#1\isdot}}
+\DeclareFieldFormat[%
+   inincollection,%
+   bookinincollection,
+   inthesis,%
+   bookinthesis,
+   bookininproceedings
+   ]{booktitle}{\mkbibquote{#1\isdot}}
 \DeclareFieldFormat[inarticle,bookinarticle]{maintitle}{\mkbibquote{#1\isdot}}
 
 % Inspired from biblatex.def
@@ -193,12 +268,13 @@
 }
 
 
-\DeclareDataInheritance{incollection}{bookinincollection,inincollection}{
+\DeclareDataInheritance{inproceedings,incollection}{bookinincollection,inincollection,bookininproceedings,inproceedings}{
 	\inherit{author}{bookauthor}%
 	\inherit{title}{booktitle}%
 	\inherit{subtitle}{booksubtitle}%
 	\inherit{booktitle}{maintitle}%
 	\inherit{booksubtitle}{mainsubtitle}%
+	\inherit{booktitleaddon}{maintitleaddon}%
 }
 
 
@@ -211,8 +287,10 @@
 
 %5. Label name
 
-\DeclareLabelname[bookinincollection,%
+\DeclareLabelname[%
   bookinarticle,%
+  bookinincollection,%
+  bookininproceedings,
   bookinthesis,%
   bookinphdthesis,%
   bookinmathesis
