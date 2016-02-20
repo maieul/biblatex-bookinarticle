@@ -18,6 +18,7 @@ digraph Biberdata {
     "section0/AcTiteLatin/booktitle" [ label="BOOKTITLE" ]
     "section0/AcTiteLatin/crossref" [ label="CROSSREF" ]
     "section0/AcTiteLatin/editor" [ label="EDITOR" ]
+    "section0/AcTiteLatin/maineditor" [fillcolor="#00ff00", label="MAINEDITOR" ]
     "section0/AcTiteLatin/location" [ label="LOCATION" ]
     "section0/AcTiteLatin/maintitle" [ label="MAINTITLE" ]
     "section0/AcTiteLatin/title" [ label="TITLE" ]
@@ -43,6 +44,7 @@ digraph Biberdata {
     "section0/Chiesa2008/booktitle" [ label="BOOKTITLE" ]
     "section0/Chiesa2008/crossref" [ label="CROSSREF" ]
     "section0/Chiesa2008/editor" [ label="EDITOR" ]
+    "section0/Chiesa2008/maineditor" [fillcolor="#00ff00", label="MAINEDITOR" ]
     "section0/Chiesa2008/location" [ label="LOCATION" ]
     "section0/Chiesa2008/maintitle" [ label="MAINTITLE" ]
     "section0/Chiesa2008/title" [ label="TITLE" ]
@@ -56,6 +58,7 @@ digraph Biberdata {
 
     "section0/Griggio2008/crossref" [ label="CROSSREF" ]
     "section0/Griggio2008/editor" [ label="EDITOR" ]
+    "section0/Griggio2008/maineditor" [fillcolor="#00ff00", label="MAINEDITOR" ]
     "section0/Griggio2008/location" [ label="LOCATION" ]
     "section0/Griggio2008/maintitle" [ label="MAINTITLE" ]
     "section0/Griggio2008/title" [ label="TITLE" ]
@@ -64,11 +67,14 @@ digraph Biberdata {
 
 
   "section0/mvcollection/title" -> "section0/Griggio2008/maintitle" [ penwidth="2.0", color="#7d7879", tooltip="Griggio2008/MAINTITLE inherited via CROSSREF from mvcollection/TITLE" ]
+  "section0/mvcollection/editor" -> "section0/Griggio2008/maineditor" [ penwidth="2.0", color="#7d7879", tooltip="Griggio2008/MAINEDITOR inherited via CROSSREF from mvcollection/EDITOR" ]
   "section0/Chiesa2008/booktitle" -> "section0/AcTiteLatin/maintitle" [ penwidth="2.0", color="#7d7879", tooltip="AcTiteLatin/MAINTITLE inherited via CROSSREF from Chiesa2008/BOOKTITLE" ]
+  "section0/Chiesa2008/maineditor" -> "section0/AcTiteLatin/maineditor" [ penwidth="2.0", color="#7d7879", tooltip="AcTiteLatin/MAINEDITOR inherited via CROSSREF from Chiesa2008/MAINEDITOR" ]
   "section0/Chiesa2008/author" -> "section0/AcTiteLatin/bookauthor" [ penwidth="2.0", color="#7d7879", tooltip="AcTiteLatin/BOOKAUTHOR inherited via CROSSREF from Chiesa2008/AUTHOR" ]
   "section0/Chiesa2008/location" -> "section0/AcTiteLatin/location" [ penwidth="2.0", color="#7d7879", tooltip="AcTiteLatin/LOCATION inherited via CROSSREF from Chiesa2008/LOCATION" ]
   "section0/Chiesa2008/title" -> "section0/AcTiteLatin/booktitle" [ penwidth="2.0", color="#7d7879", tooltip="AcTiteLatin/BOOKTITLE inherited via CROSSREF from Chiesa2008/TITLE" ]
   "section0/Griggio2008/editor" -> "section0/Chiesa2008/editor" [ penwidth="2.0", color="#7d7879", tooltip="Chiesa2008/EDITOR inherited via CROSSREF from Griggio2008/EDITOR" ]
+  "section0/Griggio2008/maineditor" -> "section0/Chiesa2008/maineditor" [ penwidth="2.0", color="#7d7879", tooltip="Chiesa2008/MAINEDITOR inherited via CROSSREF from Griggio2008/MAINEDITOR" ]
   "section0/Griggio2008/title" -> "section0/Chiesa2008/booktitle" [ penwidth="2.0", color="#7d7879", tooltip="Chiesa2008/BOOKTITLE inherited via CROSSREF from Griggio2008/TITLE" ]
   "section0/Griggio2008/location" -> "section0/Chiesa2008/location" [ penwidth="2.0", color="#7d7879", tooltip="Chiesa2008/LOCATION inherited via CROSSREF from Griggio2008/LOCATION" ]
   "section0/Griggio2008/maintitle" -> "section0/Chiesa2008/maintitle" [ penwidth="2.0", color="#7d7879", tooltip="Chiesa2008/MAINTITLE inherited via CROSSREF from Griggio2008/MAINTITLE" ]
