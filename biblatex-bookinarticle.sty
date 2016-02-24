@@ -12,7 +12,7 @@
 % 
 % The Current Maintainer of this work is Maïeul Rouquette
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{biblatex-bookinarticle}[2016/02/11 v1.3.0 Book in article, in incollection and in thesis with biblatex]
+\ProvidesPackage{biblatex-bookinarticle}[2016/02/24 v1.3.1 Book in article, in incollection and in thesis with biblatex]
 
 % 1. The drivers
 \DeclareBibliographyDriver{inarticle}{%
@@ -152,24 +152,27 @@
 \DeclareBibliographyAlias{bookinincollection}{inincollection}
 \DeclareBibliographyAlias{bookinthesis}{inthesis}
 
-\DeclareDriverSourcemap[datatype=bibtex]{
-  \map{
-    \step[typesource=inmastersthesis, typetarget=inthesis, final]
-    \step[fieldset=type,            fieldvalue=mathesis]
-  }
-  \map{
-    \step[typesource=inphdthesis, typetarget=inthesis, final]
-    \step[fieldset=type,            fieldvalue=phdthesis]
-  }
-  \map{
-    \step[typesource=bookinmastersthesis, typetarget=inthesis, final]
-    \step[fieldset=type,            fieldvalue=mathesis]
-  }
-  \map{
-    \step[typesource=bookinphdthesis, typetarget=inthesis, final]
-    \step[fieldset=type,            fieldvalue=phdthesis]
+\DeclareStyleSourcemap{
+ \maps[datatype=bibtex]{
+        \map{
+          \step[typesource=inmastersthesis, typetarget=inthesis, final]
+          \step[fieldset=type,            fieldvalue=mathesis]
+        }
+        \map{
+          \step[typesource=inphdthesis, typetarget=inthesis, final]
+          \step[fieldset=type,            fieldvalue=phdthesis]
+        }
+        \map{
+          \step[typesource=bookinmastersthesis, typetarget=inthesis, final]
+          \step[fieldset=type,            fieldvalue=mathesis]
+        }
+        \map{
+          \step[typesource=bookinphdthesis, typetarget=inthesis, final]
+          \step[fieldset=type,            fieldvalue=phdthesis]
+        }
   }
 }
+
 % 3. The formats
 
 \DeclareFieldFormat[inarticle,inincollection,inthesis]{title}{\mkbibquote{#1\isdot}}
