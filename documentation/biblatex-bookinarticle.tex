@@ -169,7 +169,9 @@ The graphs~\ref{crossref} summaries the use of cross-referencing.
 
 \begin{figure}
   \centering
-\includegraphics[height=0.99\textheight]{biblatex-bookinarticle-crossref.pdf}
+  \IfFileExists{biblatex-bookinarticle-crossref.pdf}{%
+    \includegraphics[height=0.99\textheight]{biblatex-bookinarticle-crossref.pdf}%
+ }{}
 \label{crossref}
 \caption{Using crossref's mechanism with \emph{biblatex-bookinarticle}}
 \end{figure}
