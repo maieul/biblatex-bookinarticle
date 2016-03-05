@@ -225,24 +225,27 @@
 \DeclareBibliographyAlias{bookininproceedings}{inproceedings}
 \DeclareBibliographyAlias{bookinthesis}{inthesis}
 
-\DeclareDriverSourcemap[datatype=bibtex]{
-  \map{
-    \step[typesource=inmastersthesis, typetarget=inthesis, final]
-    \step[fieldset=type,            fieldvalue=mathesis]
-  }
-  \map{
-    \step[typesource=inphdthesis, typetarget=inthesis, final]
-    \step[fieldset=type,            fieldvalue=phdthesis]
-  }
-  \map{
-    \step[typesource=bookinmastersthesis, typetarget=inthesis, final]
-    \step[fieldset=type,            fieldvalue=mathesis]
-  }
-  \map{
-    \step[typesource=bookinphdthesis, typetarget=inthesis, final]
-    \step[fieldset=type,            fieldvalue=phdthesis]
+\DeclareSourcemap{
+ \maps[datatype=bibtex]{
+        \map{
+          \step[typesource=inmastersthesis, typetarget=inthesis, final]
+          \step[fieldset=type,            fieldvalue=mathesis]
+        }
+        \map{
+          \step[typesource=inphdthesis, typetarget=inthesis, final]
+          \step[fieldset=type,            fieldvalue=phdthesis]
+        }
+        \map{
+          \step[typesource=bookinmastersthesis, typetarget=inthesis, final]
+          \step[fieldset=type,            fieldvalue=mathesis]
+        }
+        \map{
+          \step[typesource=bookinphdthesis, typetarget=inthesis, final]
+          \step[fieldset=type,            fieldvalue=phdthesis]
+        }
   }
 }
+
 % 3. The formats
 
 \DeclareFieldFormat[%
