@@ -1,4 +1,4 @@
-biblatex-bookinarticle
+biblatex-bookinother
 ======================
 
-New biblatex types for old books edited in other type : @bookinarticle, @bookincollection, @bookinincollection, @bookinproceedings, @bookininproceedings, @bookinthesis.
+New biblatex types for old books edited in other type.
