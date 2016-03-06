@@ -39,6 +39,8 @@
   \newunit\newblock
   \usebibmacro{in:}%
   \usebibmacro{bybookauthor}%
+  \newunit
+  \usebibmacro{bybookeditor}%
   \setunit{\labelnamepunct}\newblock
   \usebibmacro{maintitle}%
   \newunit\newblock
@@ -266,6 +268,18 @@
 % 3. The new fields format
 
 
+% 3.a bookeditor
+
+\newbibmacro*{bybookeditor}{%
+  \ifnameundef{bookeditor}
+    {}
+    {\usebibmacro{bytypestrg}{bookeditor}{editor}%
+     \setunit{\addspace}%
+     \printnames[byeditor]{bookeditor}%
+     \newunit}%
+  }
+
+% 3.b Booinkeditor
 \xpatchbibdriver{incollection}%
   {\usebibmacro{byauthor}}
   {\usebibmacro{byauthor}\newunit\usebibmacro{bybookineditor}}
