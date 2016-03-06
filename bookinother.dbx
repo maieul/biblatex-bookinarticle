@@ -15,6 +15,14 @@
 \ProvidesFile{bookinother.dbx}
 [2016/03/09 v2.0.0 biblatex bibliography style to have entry type for book edited in other entry type (MR)]
 
-% To be completed …
+%2 Field declared by morenames.dbx, for bookinother entrytypes
+\DeclareDatamodelEntryfields[%
+  bookincollection,bookinproceedings,bookinreference,%
+  bookinincollection,bookininproceedings,bookininreference,%
+  inincollection,ininproceedings,ininreference%
+  ]{
+  maineditor
+}
+
 
 \endinput
