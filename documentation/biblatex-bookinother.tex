@@ -43,10 +43,10 @@
 \section{Introduction}
 
 \subsection{Aim}
-The default \biblatex's styles provide a entry type called \bibtype{bookinbook}. 
+The default \biblatex's styles provide an entry type called \bibtype{bookinbook}. 
 However, it can happen, especially in classical philology, that a book is edited in other entry type. 
 For example a book can be edited in article, in proceedings, in a thesis etc.
-This packages provides new bibliographic entry type.
+This package provides new bibliographic entry types.
 
 \subsection{History}
 
@@ -68,11 +68,12 @@ The package provides:
   \item New entry types. 
   \item Inheritance's mechanism for these entry types. 
   \item Integration of the entry types following the standard bibliography's styles of biblatex. 
+  \item Integration of the new fields of the \emph{biblatex-morenames} package.
 \end{itemize}
 
 
 \section{Loading package}
-As the package defines new fields, you must load it as \verb+bibstyle+ option of \biblatex package.
+As the package defines new fields, you must load it as a \verb+bibstyle+ option of \biblatex package.
  
 \begin{minted}{latex}
   \usepackage[citestyle=verbose,bibstyle=bookinother]{biblatex}
@@ -82,7 +83,7 @@ Notes that the \emph{bookinother} bibliography's style automatically loads \emph
  
 In any case, you can choose you own citation's style.
  
-If you need to use this package with package which also requires loading \emph{via} the \verb+bibstyle+ option, as for example biblatex-morenames, just use the biblatex-multiple-dm package, with the following way:
+If you need to use this package with package which also requires loading \emph{via} the \verb+bibstyle+ option, as for example biblatex-morenames, just use the biblatex-multiple-dm package, in the following way:
 
 \begin{minted}{latex}
   \usepackage[tools={bookinother,morenames},bibstyle=verbose]{biblatex-multiple-dm}
@@ -93,16 +94,18 @@ If you need to use this package with package which also requires loading \emph{v
 \subsection{Using crossref mechanisme}
 
 
-The package provides new entry type in the form of \bibtype{bookin\meta{othertype}}.
- The best way to manage these entry type is to use the crossref mechanism of biber.
+The package provides new entry types in the form of \bibtype{bookin\meta{othertype}}.
+ The best way to manage these entry types is to use the crossref mechanism of biber.
  So the \bibfield{crossref} field of a \bibtype{bookin\meta{othertype}} entry should refers to the main  \bibtype{\meta{othertype}} entry. 
 
  The package also provides new  \bibtype{in\meta{othertype}} entry types.
- The only differences with the \bibtype{bookin\meta{othertype}} entry types is that the \bibfield{title} is, with standard styles, printed in roman font, wrapped in quotation marks.
+ The only differences with the \bibtype{bookin\meta{othertype}} entry types is that the \bibfield{title} is, with standard styles, printed in roman font and wrapped in quotation marks.
  
 \subsection{Fields}
 
-In the following parts of this handbook, we will describe, for each entry type, the fields' inheritance mechanism. Here is a list of fields which are NOT inherited :
+In the following parts of this handbook, we will describe, for each entry type, the fields inheritance mechanism. 
+
+Here is a list of fields which are NOT inherited :
 \begin{itemize}
   \item \bibfield{author} means the author of the edited (ancient) book.
   \item \bibfield{bookineditor} means the editor of the edited (ancient) book.
@@ -111,7 +114,7 @@ In the following parts of this handbook, we will describe, for each entry type, 
  
 \end{itemize}
 
-If you use the \bibfield{inbook} field of the \emph{biblatex-morenames} package, it will be inherited as \bibfield{bookeditor} field.
+If you use the \bibfield{ineditor} field of the \emph{biblatex-morenames} package, it will be inherited as \bibfield{bookeditor} field.
 
 Notes that the package take account of the \bibfield{maineditor} field of the \emph{biblatex-morenames} package, if loaded.
 
@@ -196,7 +199,8 @@ The ways new entry types are printed are derivated from the \verb+standard.bbx+ 
 \item Loading as a \biblatex bibliographic style and not more as a \LaTeX\ package.
 \item Add \bibtype{bookincollection}, \bibtype{bookininproceedings}, \bibtype{bookininreference}, \bibtype{bookinproceedings}, \bibtype{bookinreference} and related.
 \item Prevent inheritance of \bibfield{shorttitle}, \bibfield{sorttitle}, \bibfield{indextitle}, \bibfield{indexsorttitle} fields.
-\item Adds field \bibfield{bookeditor} and \bibfield{bookineditor}.
+\item Add field \bibfield{bookeditor} and \bibfield{bookineditor}.
+\item Compatibility with the \emph{biblatex-morenames} package.
 \end{release}
 
 \begin{release}{1.3.1}{2016-02-24}
