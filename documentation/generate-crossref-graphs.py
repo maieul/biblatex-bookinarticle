@@ -36,5 +36,7 @@ for file_name in directory_files:
     os.system("biber -output-format=dot --dot-include=crossref,field " + basename)
     os.system("dot -Tpdf " + basename + ".dot " + "-o " + basename + ".pdf")
 
-    # by security, delete the .tex file, to distribute it
+    # by security, delete the temporary files, to avoid distributing it
     os.remove(tex_file_name)
+    os.remove(basename+".bcf")
+    os.remove(basename+".blg")
