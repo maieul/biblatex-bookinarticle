@@ -6,7 +6,7 @@ dist: all
 	mkdir biblatex-bookinother
 	ln README *bbx *dbx *makefile biblatex-bookinother
 	mkdir biblatex-bookinother/documentation
-	ln documentation/*tex documentation/*bib documentation/*pdf documentation/*.dot documentation/*py documentation/makefile  biblatex-bookinother/documentation
+	ln documentation/*tex  documentation/*bib documentation/*pdf documentation/*.dot documentation/*py documentation/makefile documentation/latexmkrc  biblatex-bookinother/documentation
 	$(RM) ../biblatex-bookinother.zip
 	zip -r ../biblatex-bookinother.zip biblatex-bookinother
 

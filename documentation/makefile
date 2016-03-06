@@ -1,8 +1,6 @@
 all: *tex *bib
 	python3 generate-crossref-graphs.py
-	xelatex --shell-escape biblatex-bookinother.tex
-	biber biblatex-bookinother
-	xelatex --shell-escape biblatex-bookinother.tex
+	latexmkrc biblatex-bookinother.tex
 
 clean:bookinother
 	$(MAKE) -C documentation clean
