@@ -1,8 +1,7 @@
 all: *tex *bib
+	python3 generate-crossref-graphs.py
 	xelatex --shell-escape biblatex-bookinother.tex
 	biber biblatex-bookinother
-	biber -output-format=dot --dot-include=crossref,field  biblatex-bookinother
-	dot -Tpdf biblatex-bookinother.dot -o biblatex-bookinother-crossref.pdf
 	xelatex --shell-escape biblatex-bookinother.tex
 
 clean:bookinother
