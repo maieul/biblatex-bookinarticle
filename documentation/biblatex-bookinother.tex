@@ -69,8 +69,7 @@ The package provides:
   \item Integration of the entry types following the standard bibliography's styles of biblatex. 
 \end{itemize}
 
-It also provides new fields name for some entry type, and use the \emph{biblatex-morename} package to use new field.
- 
+
 \section{Loading package}
 As the package defines new fields, you must load it as \verb+bibstyle+ option of \biblatex package.
  
@@ -78,14 +77,14 @@ As the package defines new fields, you must load it as \verb+bibstyle+ option of
   \usepackage[citestyle=verbose,bibstyle=bookinother]{biblatex}
 \end{minted}
 
-Notes that the \emph{bookintoher} bibliography's style automatically loads \emph{morenames} bibliography's style, which means its compatible with all the standard bibliography  styles of biblatex, because all of them are, in a way or an other, based on the \emph{verbose} bibliography's style, which is loaded by the \emph{morenames} bibliography's style.
+Notes that the \emph{bookinother} bibliography's style automatically loads \emph{verbose} bibliography's style, which means its compatible with all the standard bibliography's  styles of \biblatex, because all of them are, in a way or an other, based on the \emph{verbose} bibliography style.
  
 In any case, you can choose you own citation's style.
  
-If you need to use this package with package which also requires loading \emph{via} the \verb+bibstyle+ option, as for example biblatex-manuscript-philology, just use the biblatex-multiple-dm package, with the following way:
+If you need to use this package with package which also requires loading \emph{via} the \verb+bibstyle+ option, as for example biblatex-morenames, just use the biblatex-multiple-dm package, with the following way:
 
 \begin{minted}{latex}
-  \usepackage[tools={bookinother,manuscripts},bibstyle=verbose]{biblatex-multiple-dm}
+  \usepackage[tools={bookinother,morenames},bibstyle=verbose]{biblatex-multiple-dm}
   \usepackage[citestyle=verbose,bibstyle=multiple-dm]{biblatex}
 \end{minted}
 \section{The new entry types}
@@ -112,6 +111,8 @@ In the following parts of this handbook, we will describe, for each entry type, 
 \end{itemize}
 
 If you use the \bibfield{inbook} field of the \emph{biblatex-morenames} package, it will be inherited as \bibfield{bookeditor} field.
+
+Notes that the package take account of the \bibfield{maineditor} field of the \emph{biblatex-morenames} package, if loaded.
 
 % Here, a loop on the entry type, to automatically generate the handbook
 
