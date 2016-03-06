@@ -17,6 +17,7 @@
 [2016/03/09 v2.0.0 biblatex bibliography style to have entry type for book edited in other entry type (MR)]
 
 \RequireBiber
+\RequirePackage{xpatch}
 \ifdef{\biblatexmultipledm@bibstyle}
 	{\RequireBibliographyStyle{\biblatexmultipledm@bibstyle}}
 	{\RequireBibliographyStyle{verbose}}
@@ -33,6 +34,8 @@
   \printlist{language}%
   \newunit\newblock
   \usebibmacro{byauthor}%
+  \newunit
+  \usebibmacro{bybookineditor}%
   \newunit\newblock
   \usebibmacro{in:}%
   \usebibmacro{bybookauthor}%
@@ -67,6 +70,8 @@
   \printlist{language}%
   \newunit\newblock
   \usebibmacro{byauthor}%
+  \newunit
+  \usebibmacro{bybookineditor}%
   \newunit\newblock
   \usebibmacro{in:}%
   \usebibmacro{bybookauthor}%
@@ -126,6 +131,8 @@
   \printlist{language}%
   \newunit\newblock
   \usebibmacro{byauthor}%
+  \newunit
+  \usebibmacro{bybookineditor}%
   \newunit\newblock
   \usebibmacro{in:}%  
   \usebibmacro{bybookauthor}%
@@ -258,6 +265,27 @@
 
 % 3. The new fields format
 
+
+\xpatchbibdriver{incollection}%
+  {\usebibmacro{byauthor}}
+  {\usebibmacro{byauthor}\newunit\usebibmacro{bybookineditor}}
+  {}
+  {}
+
+\xpatchbibdriver{inproceedings}%
+  {\usebibmacro{byauthor}}
+  {\usebibmacro{byauthor}\newunit\usebibmacro{bybookineditor}}
+  {}
+  {}
+
+\newbibmacro*{bybookineditor}{%
+  \ifnameundef{bookineditor}
+    {}
+    {\usebibmacro{bytypestrg}{bookineditor}{editor}%
+     \setunit{\addspace}%
+     \printnames[byeditor]{bookineditor}%
+     \newunit}%
+  }
 
 
 % 4. The formats for classical fields
