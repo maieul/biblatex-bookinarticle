@@ -19,7 +19,7 @@
 
 \DeclareDatamodelFields[type=list,datatype=name]{
   bookeditor,
-  bookineditor
+  bookineditor,
 }
 
 %2. For bookinother entrytypes
