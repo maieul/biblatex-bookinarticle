@@ -288,6 +288,15 @@
 	\inherit{booktitleaddon}{maintitleaddon}%
 }
 
+\DeclareDataInheritance{proceedings}{bookinproceedings}{%
+  \inherit{title}{booktitle}
+  \inherit{subtitle}{booksubtitle}
+  \inherit{titleaddon}{booktitleaddon}
+  \noinherit{shorttitle}
+  \noinherit{sorttitle}
+  \noinherit{indextitle}
+  \noinherit{indexsorttitle}
+}
 
 \DeclareDataInheritance{thesis,phdthesis,mathesis}{bookinthesis,inthesis,inphdthesis,inmathesis,bookinphdthesis,bookinmathesis}{
 	\inherit{author}{bookauthor}% 
@@ -295,6 +304,7 @@
 	\inherit{titleaddon}{booktitleaddon}%
 	\inherit{subtitle}{booksubtitle}%
 }
+
 
 
 %5. Label name
