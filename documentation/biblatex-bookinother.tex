@@ -148,7 +148,12 @@ In the following parts of this handbook, we will describe, for each entry type, 
 % 3) More texts to add…
 \docsvlist{%
   {{article}{BHG226e}{}},%
-  {{collection}{Aristotle2016}{}},%
+  {{collection}{Aristotle2016}{%
+  \unexpanded{\subsection{About \bibtype{bookinreference}}
+  The package also provides a \bibtype{bookinreference} entry type for book edited in a \bibtype{reference}.
+  This is a more specific variant of \bibtype{bookincollection}.
+  The standard styles will treat this entry type as an alias for \bibtype{bookincollection}.
+  }}},%
   {{incollection}{AcTiteLatin}{}},%
   {{inproceedings}{Aristotle2012}{}},%
   {{proceedings}{Aristotle2015}{}},%
@@ -180,8 +185,7 @@ The ways new entry types are printed are derivated from the \verb+standard.bbx+ 
 \begin{release}{2.0.0}{2016-03-09}
 \item Change name to \emph{biblatex-bookinother}.
 \item Loading as a \biblatex bibliographic style and not more as a \LaTeX\ package.
-\item Add \bibtype{bookincollection} and \bibtype{bookinproceedings}.
-\item Add \bibtype{bookininproceedings} and related.
+\item Add \bibtype{bookincollection}, \bibtype{bookininproceedings}, \bibtype{bookinproceedings}, \bibtype{bookinreference} and related.
 \item Prevent inheritance of \bibfield{shorttitle}, \bibfield{sorttitle}, \bibfield{indextitle}, \bibfield{indexsorttitle} fields.
 \end{release}
 
