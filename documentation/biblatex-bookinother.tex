@@ -154,7 +154,12 @@ In the following parts of this handbook, we will describe, for each entry type, 
   This is a more specific variant of \bibtype{bookincollection}.
   The standard styles will treat this entry type as an alias for \bibtype{bookincollection}.
   }}},%
-  {{incollection}{AcTiteLatin}{}},%
+  {{incollection}{AcTiteLatin}{%
+  \unexpanded{\subsection{About \bibtype{bookininreference}}
+  The package also provides a \bibtype{bookininreference} entry type for book edited in a \bibtype{inreference}.
+  This is a more specific variant of \bibtype{bookinincollection}.
+  The standard styles will treat this entry type as an alias for \bibtype{bookinincollection}.
+  }}},%
   {{inproceedings}{Aristotle2012}{}},%
   {{proceedings}{Aristotle2015}{}},%
   {{thesis}{GuilielmusdeBoldensele}{%
@@ -185,7 +190,7 @@ The ways new entry types are printed are derivated from the \verb+standard.bbx+ 
 \begin{release}{2.0.0}{2016-03-09}
 \item Change name to \emph{biblatex-bookinother}.
 \item Loading as a \biblatex bibliographic style and not more as a \LaTeX\ package.
-\item Add \bibtype{bookincollection}, \bibtype{bookininproceedings}, \bibtype{bookinproceedings}, \bibtype{bookinreference} and related.
+\item Add \bibtype{bookincollection}, \bibtype{bookininproceedings}, \bibtype{bookininreference}, \bibtype{bookinproceedings}, \bibtype{bookinreference} and related.
 \item Prevent inheritance of \bibfield{shorttitle}, \bibfield{sorttitle}, \bibfield{indextitle}, \bibfield{indexsorttitle} fields.
 \end{release}
 
