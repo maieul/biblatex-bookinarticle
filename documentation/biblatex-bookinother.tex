@@ -12,6 +12,7 @@
 \usepackage{graphics}
 % Usefull commands
 \newcommand{\biblatex}{\emph{biblatex}\xspace}
+\newcommand{\meta}[1]{\texttt{<#1>}}
 \pretocmd{\bibfield}{\sloppy}{}{}
 \pretocmd{\bibtype}{\sloppy}{}{}
 \newcommand{\namebibstyle}[1]{\texttt{#1}}
@@ -86,132 +87,81 @@ If you need to use this package with package which also requires loading \emph{v
 \end{minted}
 \section{The new entry types}
 
-\subsection{\bibtype{bookinarticle} Entry Type}
+\subsection{Using crossref mechanisme}
 
-A new entrytype is defined: \bibtype{bookinarticle}. It uses the standard fields of a \bibfield{article}, with these changes:
 
+The package provides new entry type in the form of \bibtype{bookin\meta{othertype}}.
+ The best way to manage these entry type is to use the crossref mechanism of biber.
+ So the \bibfield{crossref} field of a \bibtype{bookin\meta{othertype}} entry should refers to the main  \bibtype{\meta{othertype}} entry. 
+
+ The package also provides new  \bibtype{in\meta{othertype}} entry types.
+ The only differences with the \bibtype{bookin\meta{othertype}} entry types is that the \bibfield{title} is, with standard styles, printed in roman font, wrapped in quotation marks.
+ 
+\subsection{Fields}
+
+In the following parts of this handbook, we will describe, for each entry type, the fields' inheritance mechanism. Here is a list of fields which are NOT inherited :
 \begin{itemize}
-	\item \bibfield{author} means the author of the ancient book.
-	\item \textbf{\bibfield{bookauthor} means the author of the article where the book is edited, e.g. the modern editor of the book}.
-	\item \bibfield{mainsubtitle} means the subtitle of the article where the book is edited.
-	\item \bibfield{maintitle} means the title of the article where the book is edited. In our example \enquote{Un mémoire anonyme sur saint Barnabé (BHG 226e)}.
-	\item \bibfield{pages} means the pages where the book is edited.
-	\item \bibfield{subtitle} means the subtitle of the edited book.
-	\item \bibfield{title} means the title of the edited book. In our example \enquote{Mémoire sur le saint apôtre Barnabé}.
-
-
+  \item \bibfield{author} means the author of the edited (ancient) book.
+  \item \bibfield{ineditor} means the editor of the edited (ancient) book.
+    It is required if different to the author of the main entry. For example, for a \bibtype{bookinarticle}, if the \bibfield{author} of the \bibtype{article} is not the editor of the \bibfield{bookinarticle}.
+  \item \bibfield{title} means the title of the edited (ancient) book.
+  \item \bibfield{subtitle} means the subtitle of the edited (ancient) book.
+ 
 \end{itemize}
 
+% Here, a loop on the entry type, to automatically generate the handbook
 
-\subsection{\bibtype{bookinincollection} Entry Type}
+\def\firstofthree#1#2#3{#1}
+\def\secondofthree#1#2#3{#2}
+\def\thirdofthree#1#2#3{#3}
+\renewcommand{\do}[1]{%
+  \edef\entrytype{\firstofthree#1}%
+  \edef\entrykey{\secondofthree#1}%
+  \edef\entrymore{\thirdofthree#1}%
+  \subsection{\bibtype{bookin\entrytype}}
+  \subsubsection{Meaning}
+  For book edited in a \bibtype{\entrytype} entry.
+  \subsubsection{.bib example}
+  
+  \inputminted[breaklines]{latex}{example-bookin\entrytype.bib}
+  
+  \subsubsection{Fields inheritance}
+  The graph~\ref{example-bookin\entrytype} shows the fields inheritance.
+  \begin{figure}
+    \includegraphics[height=0.9\textheight]{example-bookin\entrytype.pdf}
+    \label{example-bookin\entrytype}
+    \caption{Inheritance related to the \bibtype{bookin\entrytype} entry type}
+  \end{figure} 
+  \subsubsection{Output example}
+  \begin{quotation}
+    \cite{\entrykey}
+  \end{quotation}
+  \entrymore 
+}
 
-A new entrytype is defined: \bibtype{bookinincollection}. It uses the standard fields of a \bibfield{inincollection}, with these changes:
-
-\begin{itemize}
-	\item \bibfield{author} means the author of the ancient book.
-	\item \textbf{\bibfield{bookauthor} means the author of the article where the book is edited, e.g. the modern editor of the book}.
-	\item \bibfield{booksubtitle} means the subtitle of the article where the book is edited.
-	\item \bibfield{booktitle} means the title of the article where the book is edited, in our example \enquote{\enquote{Non tibi proderit hec eruditio}. La versione latina degli \emph{Acta} greci del discepolo Tito}. 
-	\item \bibfield{maintitle} means the title of the collection were the article is published, in our example \enquote{Suave mari magno\ldots}.
-	\item \bibfield{mainsubtitle} means the subtitle of the collection were the article is published, in our example \enquote{studi offerti dai colleghi udinesi a Ernesto Berti}.
-	\item \bibfield{pages} means the pages where the book is edited.
-	\item \bibfield{subtitle} means the subtitle of the edited book.
-	\item \bibfield{title} means the title of the edited book. In our example \enquote{Passio Sancti Titi Apostoli, Mense Ianurii die Quarto}.
-
-
-\end{itemize}
-
-\subsection{\bibtype{bookinthesis} Entry Type}
-
-A new entrytype is defined: \bibtype{bookinthesis}. It uses the standard fields of a \bibfield{thesis}, with these changes:
-
-\begin{itemize}
-	\item \bibfield{author} means the author of the ancient book.
-	\item \textbf{\bibfield{bookauthor} means the author of the thesis where the book is edited, e.g. the modern editor of the book}.
-	\item \bibfield{booksubtitle} means the subtitle of the thesis where the book is edited.
-	\item \bibfield{booktitle} means the title of the thesis where the book is edited. In our example \enquote{A Nice Title}.
-	\item \bibfield{pages} means the pages where the book is edited.
-	\item \bibfield{subtitle} means the subtitle of the edited book.
-	\item \bibfield{title} means the title of the edited book. In our example \enquote{The Ancient Text}.
-
-
-\end{itemize}
-
-\subsection{Crossref's use}
-
-You can also use the Biber's crossref's facilities.
-
-\subsubsection{For \bibtype{bookinarticle}}
-The \bibfield{crossfield} of a \bibtype{bookinarticle} entry refers to a \bibtype{article} entry. The fields are inherited from \bibtype{article} following these rules:
-
-\begin{itemize}
-	\item \bibfield{author} becomes \bibfield{bookauthor}.
-	\item \bibfield{title} becomes \bibfield{maintitle}.
-	\item \bibfield{subtitle} becomes \bibfield{mainsubtitle}.
-
-\end{itemize}
-
-See the following example:
-
-\inputminted[breaklines]{latex}{example-bookinarticle.bib}
-
-\subsubsection{For \bibtype{bookinincollection}}
-
-The \bibfield{crossfield} of a \bibtype{bookinincollection} entry refers to a \bibtype{inincollection} entry. The fields are inherited from \bibtype{inincollection} following these rules:
-
-\begin{itemize}
-	\item \bibfield{author} becomes \bibfield{bookauthor}.
-	\item \bibfield{booktitle} becomes \bibfield{maintitle}.
-	\item \bibfield{booksubtitle} becomes \bibfield{mainsubtitle}.
-	\item \bibfield{title} becomes \bibfield{booktitle}.
-	\item \bibfield{subtitle} becomes \bibfield{booksubtitle}.
-
-\end{itemize}
-
-See the following example:
-
-\inputminted[breaklines]{latex}{example-bookinincollection.bib}
-
-\subsubsection{For \bibtype{bookinthesis}}
-The \bibfield{crossfield} of a \bibtype{bookinthesis} entry refers to a \bibtype{article} entry. The fields are inherited from \bibtype{thesis} following these rules:
-
-\begin{itemize}
-	\item \bibfield{author} becomes \bibfield{bookauthor}.
-	\item \bibfield{title} becomes \bibfield{booktitle}.
-	\item \bibfield{subtitle} becomes \bibfield{booksubtitle}.
-
-\end{itemize}
-
-See the following example:
-
-\inputminted[breaklines]{latex}{example-bookinthesis.bib}
-
-\subsubsection{Summary}
-The graphs~\ref{crossref} summaries the use of cross-referencing.
-
-%\begin{figure}
-%  \centering
-%\includegraphics[height=0.99\textheight]{biblatex-bookinother-crossref.pdf}
-%\label{crossref}
-%\caption{Using crossref's mechanism with \emph{biblatex-bookinother}}
-%\end{figure}
-
-\subsection{\bibtype{inarticle} entry type}
-
-The package also provides a \bibtype{inarticle} entry type, to show a section of an article with its own title. It is like \bibtype{bookinarticle}, but the \bibtype{title} field is printed with italic, and not with quotation marks.
-
-
-\subsection{\bibtype{inincollection} Entry Type}
-
-The package also provides a \bibtype{inincollection} entry type, to show a section of an article of a collection with its own title. It is like \bibtype{bookinincollection}, but the \bibtype{title} field is printed with italic, and not with quotation marks.
-
-\subsection{\bibtype{inthesis} Entry Type}
-
-The package also provides a \bibtype{inthesis} entry type, to show a section of a thesis with its own title. It is like \bibtype{bookinthesis}, but the \bibtype{title} field is printed with italic, and not with quotation marks.
-
-The package also provides \bibtype{inphdthesis} and \bibtype{inmathesis}, similar to \bibtype{thesis}, with the \bibfield{type} field already defined.
-
-
+% For each entry of the csvlist:
+% 1) The main type
+% 2) The name of the entry for demonstration
+% 3) More texts to add…
+\docsvlist{%
+  {{article}{BHG226e}{}},%
+  {{incollection}{AcTiteLatin}{}},%
+  {{thesis}{GuilielmusdeBoldensele}{%
+  \unexpanded{\subsubsection{About the type of thesis}
+  As for the standard \bibtype{thesis} entry type, a \bibtype{bookinthesis} can contain a \bibfield{type} field containing one the following key:
+  \begin{description}
+    \item[mathesis] For a master's thesis.
+    \item[phdthesis] For a phd's thesis.
+    \item[candthesis] For a candidate's thesis.
+  \end{description}
+  The value of this field is automatically inherited from the main entry.
+  The package also provides two entry types:
+  \begin{itemize}
+    \item \bibtype{bookinmathesis} for book edited in a \bibtype{mathesis};
+    \item \bibtype{bookinphdthesis} for book edited in a \bibtype{phdthesis}.
+  \end{itemize}
+  }}}%
+}
 \section{Customization}
 
 The ways new entry types are printed are derivated from the \verb+standard.bbx+ bibliography's style. You can customize it by overriding bibliographic macros or bibliographic drivers. Look at the \verb+bookinother.bbx+file.
