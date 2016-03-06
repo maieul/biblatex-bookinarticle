@@ -105,8 +105,7 @@ The package provides new entry type in the form of \bibtype{bookin\meta{othertyp
 In the following parts of this handbook, we will describe, for each entry type, the fields' inheritance mechanism. Here is a list of fields which are NOT inherited :
 \begin{itemize}
   \item \bibfield{author} means the author of the edited (ancient) book.
-  \item \bibfield{ineditor} means the editor of the edited (ancient) book.
-    It is required if different to the author of the main entry. For example, for a \bibtype{bookinarticle}, if the \bibfield{author} of the \bibtype{article} is not the editor of the \bibfield{bookinarticle}.
+  \item \bibfield{bookineditor} means the editor of the edited (ancient) book.
   \item \bibfield{title} means the title of the edited (ancient) book.
   \item \bibfield{subtitle} means the subtitle of the edited (ancient) book.
  
@@ -193,6 +192,7 @@ The ways new entry types are printed are derivated from the \verb+standard.bbx+ 
 \item Loading as a \biblatex bibliographic style and not more as a \LaTeX\ package.
 \item Add \bibtype{bookincollection}, \bibtype{bookininproceedings}, \bibtype{bookininreference}, \bibtype{bookinproceedings}, \bibtype{bookinreference} and related.
 \item Prevent inheritance of \bibfield{shorttitle}, \bibfield{sorttitle}, \bibfield{indextitle}, \bibfield{indexsorttitle} fields.
+\item Adds field \bibfield{bookeditor} and \bibfield{bookineditor}.
 \end{release}
 
 \begin{release}{1.3.1}{2016-02-24}
