@@ -27,7 +27,8 @@
 	url={https://github.com/maieul/biblatex-bookinarticle}}
 
 % biblatex
-\usepackage[citestyle=verbose,bibstyle=bookinother]{biblatex}
+\usepackage[tools={bookinother,morenames},bibstyle=verbose]{biblatex-multiple-dm}
+\usepackage[citestyle=verbose,bibstyle=multiple-dm]{biblatex}
 \addbibresource{example-bookinarticle.bib}
 \addbibresource{example-bookincollection.bib}
 \addbibresource{example-bookinincollection.bib}

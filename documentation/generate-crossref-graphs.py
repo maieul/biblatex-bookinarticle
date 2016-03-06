@@ -22,7 +22,8 @@ for file_name in directory_files:
     # write the .tex file content
     tex_file_name = basename + ".tex"
     tex_file_content = "\documentclass{article}\n\
-    \\usepackage[bibstyle=bookinother]{biblatex}\n\
+    \\usepackage[tools={bookinother,morenames},bibstyle=verbose]{biblatex-multiple-dm}\n\
+    \\usepackage[bibstyle=multiple-dm]{biblatex}\n\
     \\bibliography{" + file_name + "}\n\
     \\begin{document}\n\
     \\nocite{*}\n\
