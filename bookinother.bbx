@@ -77,6 +77,11 @@
   \newunit\newblock
   \usebibmacro{in:}%
   \usebibmacro{maintitle}%
+  \ifbibmacroundef{bymaineditor+others}%
+    {}
+    {\newunit%
+    \usebibmacro{bymaineditor+others}%
+    }%
   \newunit\newblock
   \usebibmacro{byeditor+others}%
   \newunit\newblock
@@ -131,6 +136,12 @@
   \newunit\newblock
   \usebibmacro{in:}%
   \usebibmacro{maintitle}%
+  \newunit%
+  \ifbibmacroundef{bymaineditor+others}%
+    {}
+    {\newunit%
+    \usebibmacro{bymaineditor+others}%
+    }%
   \newunit\newblock
   \usebibmacro{event+venue+date}%
   \newunit\newblock
@@ -245,7 +256,11 @@
   }
 }
 
-% 3. The formats
+% 3. The new fields format
+
+
+
+% 4. The formats for classical fields
 
 \DeclareFieldFormat[%
   inarticle,%
@@ -274,7 +289,7 @@
 \DeclareFieldFormat[inarticle,bookinarticle]{volume}{#1}% volume of a journal
 \DeclareFieldFormat[inarticle,bookinarticle]{number}{#1}% number of a journal
 
-%4. Inheritance
+% 5. Inheritance
 
 \DeclareDataInheritance{article}{bookinarticle,inarticle}{
 	\inherit{author}{bookauthor}% 
@@ -335,7 +350,7 @@
 
 
 
-%5. Label name
+% 6. Label name
 
 \DeclareLabelname[%
   bookinarticle,%
