@@ -1,6 +1,6 @@
 all: *tex *bib
 	python3 generate-crossref-graphs.py
-	latexmkrc biblatex-bookinother.tex
+	latexmk biblatex-bookinother.tex
 
 clean:bookinother
 	$(MAKE) -C documentation clean
