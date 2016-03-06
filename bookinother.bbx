@@ -223,6 +223,7 @@
 \DeclareBibliographyAlias{bookininproceedings}{ininproceedings}
 \DeclareBibliographyAlias{bookinproceedings}{inproceedings}
 \DeclareBibliographyAlias{bookinreference}{incollection}
+\DeclareBibliographyAlias{bookininreference}{inincollection}
 \DeclareBibliographyAlias{bookinthesis}{inthesis}
 
 \DeclareSourcemap{
@@ -251,16 +252,19 @@
 \DeclareFieldFormat[%
   inarticle,%
   inincollection,%
-  ininproceedings%
+  ininproceedings,%
+  ininreference,%
   inthesis,%
   ]{title}{\mkbibquote{#1\isdot}}
 \DeclareFieldFormat[%
    inincollection,%
-   bookinincollection,
+   bookinincollection,%
    inthesis,%
-   bookinthesis,
-   ininproceedings,
-   bookininproceedings,
+   bookinthesis,%
+   ininproceedings,%
+   bookininproceedings,%
+   ininreference,%
+   bookininreference,%
    ]{booktitle}{\mkbibquote{#1\isdot}}
 \DeclareFieldFormat[inarticle,bookinarticle]{maintitle}{\mkbibquote{#1\isdot}}
 
@@ -295,7 +299,7 @@
   \noinherit{indexsorttitle}
 }
 
-\DeclareDataInheritance{inproceedings,incollection}{bookinincollection,inincollection,bookininproceedings,inproceedings}{
+\DeclareDataInheritance{inproceedings,incollection,inreference}{bookinincollection,inincollection,bookininproceedings,inproceedings,ininreference,bookininreference}{
 	\inherit{author}{bookauthor}%
 	\inherit{title}{booktitle}%
 	\inherit{subtitle}{booksubtitle}%
@@ -339,6 +343,7 @@
   bookincollection,%
   bookinincollection,%
   bookininproceedings,
+  bookininreference,%
   bookinproceedings,%
   bookinreference,%
   bookinthesis,%
