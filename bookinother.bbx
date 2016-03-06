@@ -111,7 +111,7 @@
   \usebibmacro{finentry}}
 
 
-\DeclareBibliographyDriver{inproceedings}{%
+\DeclareBibliographyDriver{ininproceedings}{%
   \usebibmacro{bibindex}%
   \usebibmacro{begentry}%
   \usebibmacro{author/translator+others}%
@@ -219,7 +219,7 @@
 
 \DeclareBibliographyAlias{bookinarticle}{inarticle}
 \DeclareBibliographyAlias{bookinincollection}{inincollection}
-\DeclareBibliographyAlias{bookininproceedings}{inproceedings}
+\DeclareBibliographyAlias{bookininproceedings}{ininproceedings}
 \DeclareBibliographyAlias{bookinthesis}{inthesis}
 
 \DeclareSourcemap{
@@ -256,7 +256,8 @@
    bookinincollection,
    inthesis,%
    bookinthesis,
-   bookininproceedings
+   ininproceedings,
+   bookininproceedings,
    ]{booktitle}{\mkbibquote{#1\isdot}}
 \DeclareFieldFormat[inarticle,bookinarticle]{maintitle}{\mkbibquote{#1\isdot}}
 
