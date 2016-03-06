@@ -219,6 +219,7 @@
 
 \DeclareBibliographyAlias{bookinarticle}{inarticle}
 \DeclareBibliographyAlias{bookinincollection}{inincollection}
+\DeclareBibliographyAlias{bookinproceedings}{inproceedings}
 \DeclareBibliographyAlias{bookininproceedings}{ininproceedings}
 \DeclareBibliographyAlias{bookinthesis}{inthesis}
 
@@ -291,6 +292,7 @@
 \DeclareDataInheritance{thesis,phdthesis,mathesis}{bookinthesis,inthesis,inphdthesis,inmathesis,bookinphdthesis,bookinmathesis}{
 	\inherit{author}{bookauthor}% 
 	\inherit{title}{booktitle}%
+	\inherit{titleaddon}{booktitleaddon}%
 	\inherit{subtitle}{booksubtitle}%
 }
 
