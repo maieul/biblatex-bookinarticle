@@ -76,14 +76,14 @@ The package provides:
 As the package defines new fields, you must load it as a \verb+bibstyle+ option of \biblatex package.
  
 \begin{minted}{latex}
-  \usepackage[citestyle=verbose,bibstyle=bookinother]{biblatex}
+  \usepackage[citestyle=yourcitationstyle,bibstyle=bookinother]{biblatex}
 \end{minted}
 
-Notes that the \emph{bookinother} bibliography's style automatically loads \emph{verbose} bibliography's style, which means its compatible with all the standard bibliography's  styles of \biblatex, because all of them are, in a way or an other, based on the \emph{verbose} bibliography style. 
++Notes that the \emph{bookinother} bibliography's style automatically loads \emph{verbose} bibliography's style, which means it is  compatible with all the \emph{verbose-xxx} and \emph{authortitle-xxx} bibliography's  styles of \biblatex, because all of them are identical to the \emph{verbose} \textbf{bibliography style}.
 
 Hoewever, if you want to use an other bibliography's style, you can use the \emph{biblatex-multiple-dm} package, but the uniformity can't be assured.
  
-In any case, you can choose you own citation's style.
+In any case, you can choose you own \textbf{citation style}.
  
 If you need to use this package with package which also requires loading \emph{via} the \verb+bibstyle+ option, as for example biblatex-morenames, just use the biblatex-multiple-dm package, in the following way:
 
@@ -91,6 +91,14 @@ If you need to use this package with package which also requires loading \emph{v
   \usepackage[tools={bookinother,morenames},bibstyle=verbose]{biblatex-multiple-dm}
   \usepackage[citestyle=verbose,bibstyle=multiple-dm]{biblatex}
 \end{minted}
+
+If you want to use this package with \emph{alphabetic-xxx} or \emph{numeric-xx} bibliography style, also use the \emph{biblatex-multiple-dm} package, changing the \verbbibstyle+ option.
+
+\begin{minted}{latex}
+  \usepackage[tools={bookinother},bibstyle=numeric]{biblatex-multiple-dm}
+  \usepackage[citestyle=numeric,bibstyle=multiple-dm]{biblatex}
+\end{minted}
+
 \section{The new entry types}
 
 \subsection{Using crossref mechanisme}
