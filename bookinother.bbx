@@ -304,6 +304,15 @@
      \newunit}%
   }
 
+\xpatchbibdriver{article}%
+  {\usebibmacro{byauthor}}
+  {\usebibmacro{byauthor}%
+  \ifbibmacroundef{byineditor}%
+    {\newunit\usebibmacro{bybookineditor}}%
+    {}%
+  }
+  {}
+  {} 
 
 % 4. The formats for classical fields
 
