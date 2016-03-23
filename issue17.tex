@@ -1,7 +1,8 @@
 %!TEX TS-program = lualatexmk
 \documentclass{scrartcl}
 \usepackage{fontspec}
-\usepackage[backend=biber,bibstyle=bookinother,citestyle=verbose, abbreviate=false]{biblatex}
+\usepackage[tools={bookinother,morenames},bibstyle=verbose]{biblatex-multiple-dm}
+\usepackage[backend=biber,bibstyle=multiple-dm,citestyle=verbose, abbreviate=false]{biblatex}
 \addbibresource{issue17.bib}
 \begin{document}
 \cite{bookinjournal}.
