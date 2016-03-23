@@ -40,7 +40,8 @@
   bookinarticle,
   inarticle,
   bookinincollection,bookininproceedings,bookininreference,%
-  inincollection,ininproceedings,ininreference%
+  inincollection,ininproceedings,ininreference,%
+  bookinjournal%
   ]{%
   bookineditor
 }
