@@ -11,6 +11,7 @@
 \usepackage{minted}
 \usepackage{graphics}
 % Usefull commands
+\newcommand{\reff}[1]{\ref{#1} p.~\pageref{#1}}
 \newcommand{\biblatex}{\emph{biblatex}\xspace}
 \newcommand{\meta}[1]{\texttt{<#1>}}
 \pretocmd{\bibfield}{\sloppy}{}{}
@@ -33,6 +34,7 @@
 \addbibresource{example-bookincollection.bib}
 \addbibresource{example-bookinincollection.bib}
 \addbibresource{example-bookininproceedings.bib}
+\addbibresource{example-bookinjournal.bib}
 \addbibresource{example-bookinproceedings.bib}
 \addbibresource{example-bookinthesis.bib}
 \begin{document}
@@ -85,7 +87,7 @@ Hoewever, if you want to use an other bibliography's style, you can use the \emp
  
 In any case, you can choose your own \textbf{citation style}.
  
-If you need to use this package with package which also requires loading \emph{via} the \verb+bibstyle+ option, as for example biblatex-morenames, just use the biblatex-multiple-dm package, in the following way:
+\label{morenames}If you need to use this package with package which also requires loading \emph{via} the \verb+bibstyle+ option, as for example \emph{biblatex-morenames}, just use the \emph{biblatex-multiple-dm} package, in the following way:
 
 \begin{minted}{latex}
   \usepackage[tools={bookinother,morenames},bibstyle=verbose]{biblatex-multiple-dm}
@@ -178,6 +180,11 @@ Notes that the package take account of the \bibfield{maineditor} field of the \e
   The standard styles will treat this entry type as an alias for \bibtype{bookinincollection}.
   }}},%
   {{inproceedings}{Aristotle2012}{}},%
+  {{journal}{Alexander_Aphrodisias}%
+  {%
+  \unexpanded{\subsubsection{About \bibfield{bookineditor}}
+  For technical reason, if you want to use the \bibfield{bookineditor} with the \bibfield{bookinjournal} entry type, you must also use the \emph{biblatex-morenames} package (see \reff{morenames}).
+  }}},%
   {{proceedings}{Aristotle2015}{}},%
   {{thesis}{GuilielmusdeBoldensele}{%
   \unexpanded{\subsubsection{About the type of thesis}
