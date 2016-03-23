@@ -1,0 +1,90 @@
+\documentclass{ltxdockit}[2011/03/25]
+\usepackage{btxdockit}
+\usepackage{fontspec}
+\usepackage[mono=false]{libertine}
+\usepackage{microtype}
+\usepackage[american]{babel}
+\usepackage[strict]{csquotes}
+\setmonofont[Scale=MatchLowercase]{DejaVu Sans Mono}
+\usepackage{shortvrb}
+\usepackage{pifont}
+\usepackage{graphics}
+% Usefull commands
+\newcommand{\reff}[1]{\ref{#1} p.~\pageref{#1}}
+\newcommand{\pkg}[1]{\emph{#1}}
+\newcommand{\biblatex}{\emph{biblatex}\xspace}
+\newcommand{\meta}[1]{\texttt{<#1>}}
+\pretocmd{\bibfield}{\sloppy}{}{}
+\pretocmd{\bibtype}{\sloppy}{}{}
+\newcommand{\namebibstyle}[1]{\texttt{#1}}
+% Meta-datas
+\titlepage{%
+	title={Book edited in other other type with biblatex},
+	subtitle={New data types},
+	email={maieul <at> maieul <dot> net},
+	author={Maïeul Rouquette},
+	revision={2.0.0},
+	date={09/03/2016},
+	url={https://github.com/maieul/biblatex-bookinarticle}}
+
+% biblatex
+\usepackage[tools={bookinother,morenames},bibstyle=verbose]{biblatex-multiple-dm}
+\usepackage[citestyle=verbose,bibstyle=multiple-dm]{biblatex}
+\addbibresource{example-bookinarticle.bib}
+\addbibresource{example-bookincollection.bib}
+\addbibresource{example-bookinincollection.bib}
+\addbibresource{example-bookininproceedings.bib}
+\addbibresource{example-bookinjournal.bib}
+\addbibresource{example-bookinproceedings.bib}
+\addbibresource{example-bookinthesis.bib}
+\begin{document}
+
+\def\firstofthree#1#2#3{#1}
+\def\secondofthree#1#2#3{#2}
+\def\thirdofthree#1#2#3{#3}
+\renewcommand{\do}[1]{%
+  \edef\entrytype{\firstofthree#1}%
+  \edef\entrykey{\secondofthree#1}%
+  \edef\entrymore{\thirdofthree#1}%
+    \cite{\entrykey}\vskip 2\baselineskip
+}
+
+% For each entry of the csvlist:
+% 1) The main type
+% 2) The name of the entry for demonstration
+% 3) More texts to add…
+\docsvlist{%
+  {{article}{BHG226e}{}},%
+  {{collection}{Aristotle2016}{%
+  \unexpanded{\subsubsection{About \bibtype{bookinreference}}
+  The package also provides a \bibtype{bookinreference} entry type for book edited in a \bibtype{reference}.
+  This is a more specific variant of \bibtype{bookincollection}.
+  The standard styles will treat this entry type as an alias for \bibtype{bookincollection}.
+  }}},%
+  {{incollection}{AcTiteLatin}{%
+  \unexpanded{\subsubsection{About \bibtype{bookininreference}}
+  The package also provides a \bibtype{bookininreference} entry type for book edited in a \bibtype{inreference}.
+  This is a more specific variant of \bibtype{bookinincollection}.
+  The standard styles will treat this entry type as an alias for \bibtype{bookinincollection}.
+  }}},%
+  {{inproceedings}{Aristotle2012}{}},%
+  {{journal}{Alexander_Aphrodisias}{}},%
+  {{proceedings}{Aristotle2015}{}},%
+  {{thesis}{GuilielmusdeBoldensele}{%
+  \unexpanded{\subsubsection{About the type of thesis}
+  As for the standard \bibtype{thesis} entry type, a \bibtype{bookinthesis} can contain a \bibfield{type} field containing one the following key:
+  \begin{description}
+    \item[mathesis] For a master's thesis.
+    \item[phdthesis] For a phd's thesis.
+    \item[candthesis] For a candidate's thesis.
+  \end{description}
+  The value of this field is automatically inherited from the main entry.
+  The package also provides two entry types:
+  \begin{itemize}
+    \item \bibtype{bookinmathesis} for book edited in a \bibtype{mathesis};
+    \item \bibtype{bookinphdthesis} for book edited in a \bibtype{phdthesis}.
+  \end{itemize}
+  }}}%
+}
+
+\end{document}
