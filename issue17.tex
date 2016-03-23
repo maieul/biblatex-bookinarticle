@@ -1,0 +1,9 @@
+%!TEX TS-program = lualatexmk
+\documentclass{scrartcl}
+\usepackage{fontspec}
+\usepackage[backend=biber,bibstyle=bookinother,citestyle=verbose, abbreviate=false]{biblatex}
+\addbibresource{issue17.bib}
+\begin{document}
+\cite{bookinjournal}.
+\printbibliography
+\end{document}
