@@ -11,8 +11,17 @@
 % This work has the LPPL maintenance status `maintained'.
 % 
 % The Current Maintainer of this work is Maïeul Rouquette
-\NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{biblatex-bookinarticle}[2016/02/24 v1.3.1 Book in article, in incollection and in thesis with biblatex]
+%0. Preamble
+
+\ProvidesFile{bookinother.bbx}
+[2016/04/06 v2.0.0 biblatex bibliography style to have entry type for book edited in other entry type (MR)]
+
+\RequireBiber
+\RequirePackage{xpatch}
+\ifdef{\biblatexmultipledm@bibstyle}
+	{\RequireBibliographyStyle{\biblatexmultipledm@bibstyle}}
+	{\RequireBibliographyStyle{verbose}}
+
 
 % 1. The drivers
 \DeclareBibliographyDriver{inarticle}{%
@@ -25,11 +34,15 @@
   \printlist{language}%
   \newunit\newblock
   \usebibmacro{byauthor}%
+  \newunit
+  \usebibmacro{bybookineditor}%
   \newunit\newblock
   \usebibmacro{in:}%
   \usebibmacro{bybookauthor}%
   \setunit{\labelnamepunct}\newblock
   \usebibmacro{maintitle}%
+  \newunit\newblock
+  \usebibmacro{bybookeditor}%
   \newunit\newblock
   \usebibmacro{in:}%
   \usebibmacro{journal+issuetitle}%
@@ -59,6 +72,8 @@
   \printlist{language}%
   \newunit\newblock
   \usebibmacro{byauthor}%
+  \newunit
+  \usebibmacro{bybookineditor}%
   \newunit\newblock
   \usebibmacro{in:}%
   \usebibmacro{bybookauthor}%
@@ -67,10 +82,13 @@
   \newunit
   \printlist{language}%
   \newunit\newblock
-  \usebibmacro{byauthor}%
-  \newunit\newblock
   \usebibmacro{in:}%
   \usebibmacro{maintitle}%
+  \ifbibmacroundef{bymaineditor+others}%
+    {}
+    {\newunit%
+    \usebibmacro{bymaineditor+others}%
+    }%
   \newunit\newblock
   \usebibmacro{byeditor+others}%
   \newunit\newblock
@@ -105,6 +123,74 @@
   \usebibmacro{finentry}}
 
 
+\DeclareBibliographyDriver{ininproceedings}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{author/translator+others}%
+  \setunit{\labelnamepunct}\newblock%
+  \usebibmacro{title}%
+  \newunit
+  \printlist{language}%
+  \newunit\newblock
+  \usebibmacro{byauthor}%
+  \newunit
+  \usebibmacro{bybookineditor}%
+  \newunit\newblock
+  \usebibmacro{in:}%  
+  \usebibmacro{bybookauthor}%
+  \setunit{\labelnamepunct}\newblock
+  \usebibmacro{booktitle}%
+  \newunit
+  \printlist{language}%
+  \newunit\newblock
+  \usebibmacro{in:}%
+  \usebibmacro{maintitle}%
+  \newunit%
+  \ifbibmacroundef{bymaineditor+others}%
+    {}
+    {\newunit%
+    \usebibmacro{bymaineditor+others}%
+    }%
+  \newunit\newblock
+  \usebibmacro{event+venue+date}%
+  \newunit\newblock
+  \usebibmacro{byeditor+others}%
+  \newunit\newblock
+  \iffieldundef{maintitle}
+    {\printfield{volume}%
+     \printfield{part}}
+    {}%
+  \newunit
+  \printfield{volumes}%
+  \newunit\newblock
+  \usebibmacro{series+number}%
+  \newunit\newblock
+  \printfield{note}%
+  \newunit\newblock
+  \printlist{organization}%
+  \newunit
+  \usebibmacro{publisher+location+date}%
+  \newunit\newblock
+  \usebibmacro{chapter+pages}%
+  \newunit\newblock
+  \iftoggle{bbx:isbn}
+    {\printfield{isbn}}
+    {}%
+  \newunit\newblock
+  \usebibmacro{doi+eprint+url}%
+  \newunit\newblock
+  \usebibmacro{addendum+pubstate}%
+  \setunit{\bibpagerefpunct}\newblock
+  \usebibmacro{pageref}%
+  \newunit\newblock
+  \iftoggle{bbx:related}
+    {\usebibmacro{related:init}%
+     \usebibmacro{related}}
+    {}%
+  \usebibmacro{finentry}}
+
+
+
 \DeclareBibliographyDriver{inthesis}{%
   \usebibmacro{bibindex}%
   \usebibmacro{begentry}%
@@ -115,6 +201,8 @@
   \printlist{language}%
   \newunit\newblock
   \usebibmacro{byauthor}%
+  \newunit
+  \usebibmacro{bybookineditor}%
   \newunit\newblock
   \usebibmacro{in:}%
   \usebibmacro{bybookauthor}%
@@ -148,8 +236,15 @@
   \usebibmacro{finentry}}
 
 % 2. The alias and sourcemaps
+
 \DeclareBibliographyAlias{bookinarticle}{inarticle}
+\DeclareBibliographyAlias{bookincollection}{incollection}
 \DeclareBibliographyAlias{bookinincollection}{inincollection}
+\DeclareBibliographyAlias{bookininproceedings}{ininproceedings}
+\DeclareBibliographyAlias{bookinjournal}{article}
+\DeclareBibliographyAlias{bookinproceedings}{inproceedings}
+\DeclareBibliographyAlias{bookinreference}{incollection}
+\DeclareBibliographyAlias{bookininreference}{inincollection}
 \DeclareBibliographyAlias{bookinthesis}{inthesis}
 
 \DeclareSourcemap{
@@ -173,10 +268,71 @@
   }
 }
 
-% 3. The formats
+% 3. The new fields format
 
-\DeclareFieldFormat[inarticle,inincollection,inthesis]{title}{\mkbibquote{#1\isdot}}
-\DeclareFieldFormat[inincollection,bookinincollection,inthesis,bookinthesis]{booktitle}{\mkbibquote{#1\isdot}}
+
+% 3.a bookeditor
+
+\newbibmacro*{bybookeditor}{%
+  \ifnameundef{bookeditor}
+    {}
+    {\usebibmacro{bytypestrg}{bookeditor}{editor}%
+     \setunit{\addspace}%
+     \printnames[byeditor]{bookeditor}%
+     \newunit}%
+  }
+
+% 3.b Booinkeditor
+\xpatchbibdriver{incollection}%
+  {\usebibmacro{byauthor}}
+  {\usebibmacro{byauthor}\newunit\usebibmacro{bybookineditor}}
+  {}
+  {}
+
+\xpatchbibdriver{inproceedings}%
+  {\usebibmacro{byauthor}}
+  {\usebibmacro{byauthor}\newunit\usebibmacro{bybookineditor}}
+  {}
+  {}
+
+\newbibmacro*{bybookineditor}{%
+  \ifnameundef{bookineditor}
+    {}
+    {\usebibmacro{bytypestrg}{bookineditor}{editor}%
+     \setunit{\addspace}%
+     \printnames[byeditor]{bookineditor}%
+     \newunit}%
+  }
+
+\xpatchbibdriver{article}%
+  {\usebibmacro{byauthor}}
+  {\usebibmacro{byauthor}%
+  \ifbibmacroundef{byineditor}%
+    {\newunit\usebibmacro{bybookineditor}}%
+    {}%
+  }
+  {}
+  {} 
+
+% 4. The formats for classical fields
+
+\DeclareFieldFormat[%
+  inarticle,%
+  inincollection,%
+  ininproceedings,%
+  ininreference,%
+  inthesis,%
+  ]{title}{\mkbibquote{#1\isdot}}
+\DeclareFieldFormat[%
+   inincollection,%
+   bookinincollection,%
+   inthesis,%
+   bookinthesis,%
+   ininproceedings,%
+   bookininproceedings,%
+   ininreference,%
+   bookininreference,%
+   ]{booktitle}{\mkbibquote{#1\isdot}}
 \DeclareFieldFormat[inarticle,bookinarticle]{maintitle}{\mkbibquote{#1\isdot}}
 
 % Inspired from biblatex.def
@@ -187,40 +343,85 @@
 \DeclareFieldFormat[inarticle,bookinarticle]{volume}{#1}% volume of a journal
 \DeclareFieldFormat[inarticle,bookinarticle]{number}{#1}% number of a journal
 
-%4. Inheritance
+% 5. Inheritance
 
 \DeclareDataInheritance{article}{bookinarticle,inarticle}{
 	\inherit{author}{bookauthor}% 
+	\inherit{ineditor}{bookeditor}%
 	\inherit{title}{maintitle}%
 	\inherit{subtitle}{mainsubtitle}%
+  \noinherit{shorttitle}
+  \noinherit{sorttitle}
+  \noinherit{indextitle}
+  \noinherit{indexsorttitle}
 }
 
+\DeclareDataInheritance{collection,reference}
+{bookincollection,bookinreference}{%
+  \inherit{title}{booktitle}
+  \inherit{subtitle}{booksubtitle}
+  \inherit{titleaddon}{booktitleaddon}
+  \noinherit{shorttitle}
+  \noinherit{sorttitle}
+  \noinherit{indextitle}
+  \noinherit{indexsorttitle}
+}
 
-\DeclareDataInheritance{incollection}{bookinincollection,inincollection}{
+\DeclareDataInheritance{inproceedings,incollection,inreference}{bookinincollection,inincollection,bookininproceedings,inproceedings,ininreference,bookininreference}{
 	\inherit{author}{bookauthor}%
 	\inherit{title}{booktitle}%
 	\inherit{subtitle}{booksubtitle}%
 	\inherit{booktitle}{maintitle}%
 	\inherit{booksubtitle}{mainsubtitle}%
+	\inherit{booktitleaddon}{maintitleaddon}%
+  \noinherit{shorttitle}
+  \noinherit{sorttitle}
+  \noinherit{indextitle}
+  \noinherit{indexsorttitle}
 }
 
+\DeclareDataInheritance{proceedings}{bookinproceedings}{%
+  \inherit{title}{booktitle}
+  \inherit{subtitle}{booksubtitle}
+  \inherit{titleaddon}{booktitleaddon}
+  \noinherit{shorttitle}
+  \noinherit{sorttitle}
+  \noinherit{indextitle}
+  \noinherit{indexsorttitle}
+}
 
 \DeclareDataInheritance{thesis,phdthesis,mathesis}{bookinthesis,inthesis,inphdthesis,inmathesis,bookinphdthesis,bookinmathesis}{
 	\inherit{author}{bookauthor}% 
 	\inherit{title}{booktitle}%
+	\inherit{titleaddon}{booktitleaddon}%
 	\inherit{subtitle}{booksubtitle}%
+  \noinherit{shorttitle}
+  \noinherit{sorttitle}
+  \noinherit{indextitle}
+  \noinherit{indexsorttitle}
 }
 
 
-%5. Label name
 
-\DeclareLabelname[bookinincollection,%
+
+% 6. Label name
+
+\DeclareLabelname[%
   bookinarticle,%
+  bookincollection,%
+  bookinincollection,%
+  bookininproceedings,
+  bookininreference,%
+  bookinjournal,%
+  bookinproceedings,%
+  bookinreference,%
   bookinthesis,%
   bookinphdthesis,%
   bookinmathesis
   ]{%
   \field{shortauthor}
   \field{author}
+  \field{ineditor}
+  \field{bookineditor}
 }
 \endinput
