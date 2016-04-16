@@ -24,8 +24,8 @@
 	subtitle={New data types},
 	email={maieul <at> maieul <dot> net},
 	author={Maïeul Rouquette},
-	revision={2.0.0},
-	date={06/04/2016},
+	revision={2.0.0a},
+	date={16/04/2016},
 	url={https://github.com/maieul/biblatex-bookinarticle}}
 
 % biblatex
@@ -82,7 +82,7 @@ As the package defines new fields, you must load it as a \verb+bibstyle+ option 
   \usepackage[citestyle=yourcitationstyle,bibstyle=bookinother]{biblatex}
 \end{minted}
 
-Notes that the \bibstyle{bookinother} bibliography's style automatically loads \bibstyle{verbose} bibliography's style, which means it is  compatible with all the \emph{verbose-xxx} and \bibstyle{authortitle-xxx} bibliography's  styles of \biblatex, because all of them are identical to the \bibstyle{verbose} \textbf{bibliography style}.
+Notes that the \namebibstyle{bookinother} bibliography's style automatically loads \namebibstyle{verbose} bibliography's style, which means it is  compatible with all the \emph{verbose-xxx} and \namebibstyle{authortitle-xxx} bibliography's  styles of \biblatex, because all of them are identical to the \namebibstyle{verbose} \textbf{bibliography style}.
 
 Hoewever, if you want to use an other bibliography's style, you can use the \pkg{biblatex-multiple-dm} package, but the uniformity can't be assured.
  
@@ -95,7 +95,7 @@ In any case, you can choose your own \textbf{citation style}.
   \usepackage[citestyle=verbose,bibstyle=multiple-dm]{biblatex}
 \end{minted}
 
-If you want to use this package with \bibstyle{alphabetic-xxx} or \bibstyle{numeric-xx} bibliography style, also use the \pkg{biblatex-multiple-dm} package, changing the \verb+bibstyle+ option.
+If you want to use this package with \namebibstyle{alphabetic-xxx} or \namebibstyle{numeric-xx} bibliography style, also use the \pkg{biblatex-multiple-dm} package, changing the \verb+bibstyle+ option.
 
 \begin{minted}{latex}
   \usepackage[tools={bookinother},bibstyle=numeric]{biblatex-multiple-dm}
@@ -207,6 +207,10 @@ The ways new entry types are printed are derived from the \verb+standard.bbx+ bi
 
 
 \begin{changelog}
+
+\begin{release}{2.0.0a}{2016-04-16}
+  \item Fix typo.
+\end{release}
 
 \begin{release}{2.0.0}{2016-04-06}
 \item Change name to \pkg{biblatex-bookinother}.
