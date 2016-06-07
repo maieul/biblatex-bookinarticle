@@ -14,13 +14,14 @@
 %0. Preamble
 
 \ProvidesFile{bookinother.bbx}
-[2016/04/16 v2.0.0a biblatex bibliography style to have entry type for book edited in other entry type (MR)]
+[2016/06/06 v2.1.0 biblatex bibliography style to have entry type for book edited in other entry type (MR)]
 
 \RequireBiber
 \RequirePackage{xpatch}
 \ifdef{\biblatexmultipledm@bibstyle}
 	{\RequireBibliographyStyle{\biblatexmultipledm@bibstyle}}
 	{\RequireBibliographyStyle{verbose}}
+
 
 
 % 1. The drivers
@@ -283,17 +284,20 @@
   }
 
 % 3.b Booinkeditor
+
+\newcommand{\bookinother@patch@failed}[1]{\PackageError{bookinother}{Unable to patch #1 driver}}
+
 \xpatchbibdriver{incollection}%
   {\usebibmacro{byauthor}}
   {\usebibmacro{byauthor}\newunit\usebibmacro{bybookineditor}}
   {}
-  {}
+  {\bookinother@patch@failed{incollection}}
 
 \xpatchbibdriver{inproceedings}%
   {\usebibmacro{byauthor}}
   {\usebibmacro{byauthor}\newunit\usebibmacro{bybookineditor}}
   {}
-  {}
+  {\bookinother@patch@failed{inproceedings}}
 
 \newbibmacro*{bybookineditor}{%
   \ifnameundef{bookineditor}
@@ -312,7 +316,7 @@
     {}%
   }
   {}
-  {} 
+  {\bookinother@patch@failed{article}} 
 
 % 4. The formats for classical fields
 
