@@ -14,7 +14,7 @@
 %0. Preamble
 
 \ProvidesFile{bookinother.bbx}
-[2016/06/06 v2.1.0 biblatex bibliography style to have entry type for book edited in other entry type (MR)]
+[2016/06/16 v2.1.1 biblatex bibliography style to have entry type for book edited in other entry type (MR)]
 
 \RequireBiber
 \RequirePackage{xpatch}
@@ -248,7 +248,7 @@
 \DeclareBibliographyAlias{bookininreference}{inincollection}
 \DeclareBibliographyAlias{bookinthesis}{inthesis}
 
-\DeclareSourcemap{
+\DeclareStyleSourcemap{
  \maps[datatype=bibtex]{
         \map{
           \step[typesource=inmastersthesis, typetarget=inthesis, final]
