@@ -129,8 +129,12 @@ Here is a list of fields which are NOT inherited :
 
 If you use the \bibfield{ineditor} field of the \pkg{biblatex-morenames} package, it will be inherited as \bibfield{bookeditor} field.
 
-Notes that the package take account of the \bibfield{maineditor} field of the \pkg{biblatex-morenames} package, if loaded.
+Note that the package takes account of the \bibfield{maineditor} field of the \pkg{biblatex-morenames} package, if loaded.
 
+Also note that the \bibfield{bookineditor} field is not added in the style of the \bibtype{bookinbook} entry type, because that is a standard \biblatex\ entry type. 
+Use the \pkg{biblatex-morenames} package to add this field to the style of \bibtype{bookinbook}.
+ 
+ 
 % Here, a loop on the entry type, to automatically generate the handbook
 
 \def\firstofthree#1#2#3{#1}
