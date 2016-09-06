@@ -14,7 +14,7 @@
 %0. Preamble
 
 \ProvidesFile{bookinother.bbx}
-[2016/06/16 v2.1.1 biblatex bibliography style to have entry type for book edited in other entry type (MR)]
+[2016/09/08 v2.2.0 biblatex bibliography style to have entry type for book edited in other entry type (MR)]
 
 \RequireBiber
 \RequirePackage{xpatch}
@@ -428,4 +428,40 @@
   \field{ineditor}
   \field{bookineditor}
 }
+
+% 7. Pour biblatex-bookinother
+
+\listadd\opcit@booktitle@entrytypes{inarticle}
+\listadd\opcit@booktitle@entrytypes{bookinarticle}
+
+\listadd\opcit@booktitle@entrytypes{inincollection}
+\listadd\opcit@booktitle@entrytypes{bookinincollection}
+
+\listadd\opcit@booktitle@entrytypes{ininproceedings}
+\listadd\opcit@booktitle@entrytypes{bookininproceedings}
+
+\listadd\opcit@booktitle@entrytypes{ininreference}
+\listadd\opcit@booktitle@entrytypes{bookininreference}
+
+\listadd\opcit@booktitle@entrytypes{inthesis}
+\listadd\opcit@booktitle@entrytypes{bookinthesis}
+
+\listadd\opcit@booktitle@entrytypes{inphdthesis}
+\listadd\opcit@booktitle@entrytypes{bookphdinthesis}
+
+\listadd\opcit@booktitle@entrytypes{inmathesis}
+\listadd\opcit@booktitle@entrytypes{bookinmathesis}
+
+\listadd\opcit@booktitle@entrytypes{inincollection}
+\listadd\opcit@booktitle@entrytypes{bookinincollection}
+
+\listadd\opcit@booktitle@entrytypes{inthesis}
+\listadd\opcit@booktitle@entrytypes{bookinthesis}
+
+\listadd\opcit@booktitle@entrytypes{ininproceedings}
+\listadd\opcit@booktitle@entrytypes{bookininproceedings}
+
+\listadd\opcit@booktitle@entrytypes{ininreference}
+\listadd\opcit@booktitle@entrytypes{bookininreference}
+
 \endinput
