@@ -42,7 +42,8 @@
   bookinincollection,bookininproceedings,bookininreference,%
   inincollection,ininproceedings,ininreference,%
   bookinjournal,%
-  ininbook,bookininbook%
+  ininbook,bookininbook,%
+  ininarticle,bookininarticle%
   ]{%
   bookineditor
 }
