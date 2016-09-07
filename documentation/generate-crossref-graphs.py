@@ -24,6 +24,7 @@ for file_name in directory_files:
     tex_file_content = "\documentclass{article}\n\
     \\usepackage[tools={bookinother,morenames},bibstyle=verbose]{biblatex-multiple-dm}\n\
     \\usepackage[bibstyle=multiple-dm]{biblatex}\n\
+    \\usepackage{biblatex-anonymous}\n\
     \\bibliography{" + file_name + "}\n\
     \\begin{document}\n\
     \\nocite{*}\n\
