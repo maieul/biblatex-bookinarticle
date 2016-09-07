@@ -62,7 +62,52 @@
   \setunit{\bibpagerefpunct}\newblock
   \usebibmacro{pageref}%
   \usebibmacro{finentry}}
-  
+ 
+
+\DeclareBibliographyDriver{ininarticle}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{author/translator+others}%
+  \setunit{\printdelim{nametitledelim}}\newblock%
+  \usebibmacro{title}%
+  \newunit
+  \printlist{language}%
+  \newunit\newblock
+  \usebibmacro{byauthor}%
+  \newunit
+  \usebibmacro{bybookineditor}%
+  \newunit\newblock
+  \usebibmacro{in:}%
+  \usebibmacro{bybookauthor}%
+  \setunit{\printdelim{nametitledelim}}\newblock
+  \usebibmacro{booktitle}%
+  \newunit\newblock
+  \usebibmacro{in:}%
+  \usebibmacro{bymainauthor}%
+  \setunit{\printdelim{nametitledelim}}\newblock
+  \usebibmacro{maintitle}%
+  \newunit\newblock
+  \usebibmacro{bybookeditor}%
+  \newunit\newblock
+  \usebibmacro{in:}%
+  \usebibmacro{journal+issuetitle}%
+  \newunit
+  \usebibmacro{byeditor+others}%
+  \newunit
+  \usebibmacro{note+pages}%
+  \newunit\newblock
+  \iftoggle{bbx:isbn}
+    {\printfield{issn}}
+    {}%
+  \newunit\newblock
+  \usebibmacro{doi+eprint+url}%
+  \newunit\newblock
+  \usebibmacro{addendum+pubstate}%
+  \setunit{\bibpagerefpunct}\newblock
+  \usebibmacro{pageref}%
+  \usebibmacro{finentry}}
+   
+
 
 \DeclareBibliographyDriver{ininbook}{%
   \usebibmacro{bibindex}%
@@ -306,6 +351,7 @@
 \DeclareBibliographyAlias{bookininreference}{inincollection}
 \DeclareBibliographyAlias{bookinthesis}{inthesis}
 \DeclareBibliographyAlias{bookininbook}{ininbook}
+\DeclareBibliographyAlias{bookininarticle}{ininarticle}
 
 \DeclareStyleSourcemap{
  \maps[datatype=bibtex]{
@@ -383,6 +429,16 @@
      \newunit}%
   }
 
+% 3.c Mainauthor
+
+\DeclareNameAlias{mainauthor}{bookauthor}
+\DeclareNameAlias{bymainauthor}{bybookauthor}
+
+\newbibmacro*{bymainauthor}{%
+  \ifnamesequal{mainauthor}{bookauthor}
+    {}
+    {\printnames{mainauthor}}}
+
 % 4. The formats for classical fields
 
 \DeclareFieldFormat[%
@@ -405,9 +461,16 @@
    bookininreference,%
    ininbook,%
    bookininbook,%
+   ininarticle,%
+   bookininarticle%
    ]{booktitle}{\mkbibquote{#1\isdot}}
 
-\DeclareFieldFormat[inarticle,bookinarticle]{maintitle}{\mkbibquote{#1\isdot}}
+\DeclareFieldFormat[%
+  inarticle,bookinarticle,%
+  ininarticle,bookininarticle%
+  ]{maintitle}{\mkbibquote{#1\isdot}}
+
+
 
 % Inspired from biblatex.def
 \DeclareFieldFormat[inarticle,bookinarticle]{series}{% series of a journal
@@ -441,11 +504,17 @@
   \noinherit{indexsorttitle}
 }
 
-\DeclareDataInheritance{inproceedings,incollection,inreference,inbook}{%
+\DeclareDataInheritance%
+  {inproceedings,
+   incollection,
+   inreference,
+   inbook,
+  }%
+  {%
   bookinincollection,inincollection,%
   bookininproceedings,inproceedings,%
   ininreference,bookininreference,%
-  bookininbook,ininbook%
+  bookininbook,ininbook,%
   }{%
 	\inherit{author}{bookauthor}%
 	\inherit{title}{booktitle}%
@@ -480,8 +549,19 @@
   \noinherit{indexsorttitle}
 }
 
-
-
+\DeclareDataInheritance{inarticle}{bookininarticle,ininarticle}{%
+	\inherit{author}{bookauthor}%
+	\inherit{bookauthor}{mainauthor}%
+	\inherit{title}{booktitle}%
+	\inherit{subtitle}{booksubtitle}%
+	\inherit{booktitle}{maintitle}%
+	\inherit{booksubtitle}{mainsubtitle}%
+	\inherit{booktitleaddon}{maintitleaddon}%
+  \noinherit{shorttitle}
+  \noinherit{sorttitle}
+  \noinherit{indextitle}
+  \noinherit{indexsorttitle}
+}
 
 % 6. Label name
 
@@ -498,6 +578,7 @@
   bookinphdthesis,%
   bookinmathesis,
   bookininbook
+  bookininarticle
   ]{%
   \field{shortauthor}
   \field{author}
@@ -542,5 +623,8 @@
 
 \listadd\opcit@booktitle@entrytypes{ininbook}
 \listadd\opcit@booktitle@entrytypes{bookininbook}
+
+\listadd\opcit@booktitle@entrytypes{ininarticle}
+\listadd\opcit@booktitle@entrytypes{bookininarticle}
 
 \endinput
