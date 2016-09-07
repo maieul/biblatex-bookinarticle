@@ -20,6 +20,7 @@
 \DeclareDatamodelFields[type=list,datatype=name]{
   bookeditor,
   bookineditor,
+  mainauthor,
 }
 
 %2. For bookinother entrytypes
@@ -43,10 +44,15 @@
   inincollection,ininproceedings,ininreference,%
   bookinjournal,%
   ininbook,bookininbook,%
-  ininarticle,bookininarticle%
   ]{%
   bookineditor
 }
+\DeclareDatamodelEntryfields[%
+  ininarticle,bookininarticle%
+  ]{%
+  bookineditor,
+  mainauthor,%
+  }
 %3. For standard entry type
 \DeclareDatamodelEntryfields[
   bookincollection,bookinproceedings,bookinreference
