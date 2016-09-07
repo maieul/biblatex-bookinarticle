@@ -77,6 +77,10 @@ The package provides:
 
 
 \section{Loading package}
+
+The package requires \emph{biblatex} 3.4 or later.
+ 
+
 As the package defines new fields, you must load it as a \verb+bibstyle+ option of \biblatex package.
  
 \begin{minted}{latex}
@@ -218,6 +222,7 @@ The ways new entry types are printed are derived from the \verb+standard.bbx+ bi
 \begin{release}{2.2.0}{2016-09-08}
   \item Add compatibility with \emph{biblatex-opcit-booktitle} package's mechanism.
   \item Add \bibtype{bookininbook} and \bibtype{ininbook} entrytype.
+  \item Use \cs{printdelim}\verb+{nametitledelim}+ instead of directly  calling \cs{labelnamepunct}.
 \end{release}
 
 \begin{release}{2.1.1}{2016-06-16}
