@@ -24,7 +24,7 @@
 
 
 
-% 1. The drivers
+% 1. The drivers for new entrytype
 \DeclareBibliographyDriver{inarticle}{%
   \usebibmacro{bibindex}%
   \usebibmacro{begentry}%
@@ -285,8 +285,10 @@
 
 % 3.b Booinkeditor
 
+% 3.b.i Tools for patching
 \newcommand{\bookinother@patch@failed}[1]{\PackageError{bookinother}{Unable to patch #1 driver}}
 
+% 3.b.ii Patch standard drivers
 \xpatchbibdriver{incollection}%
   {\usebibmacro{byauthor}}
   {\usebibmacro{byauthor}\newunit\usebibmacro{bybookineditor}}
@@ -299,14 +301,6 @@
   {}
   {\bookinother@patch@failed{inproceedings}}
 
-\newbibmacro*{bybookineditor}{%
-  \ifnameundef{bookineditor}
-    {}
-    {\usebibmacro{bytypestrg}{bookineditor}{editor}%
-     \setunit{\addspace}%
-     \printnames[byeditor]{bookineditor}%
-     \newunit}%
-  }
 
 \xpatchbibdriver{article}%
   {\usebibmacro{byauthor}}
@@ -317,6 +311,18 @@
   }
   {}
   {\bookinother@patch@failed{article}} 
+
+
+
+% 3.b.iii Declare Bibmacro
+\newbibmacro*{bybookineditor}{%
+  \ifnameundef{bookineditor}
+    {}
+    {\usebibmacro{bytypestrg}{bookineditor}{editor}%
+     \setunit{\addspace}%
+     \printnames[byeditor]{bookineditor}%
+     \newunit}%
+  }
 
 % 4. The formats for classical fields
 
