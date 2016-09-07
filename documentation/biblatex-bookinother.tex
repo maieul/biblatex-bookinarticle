@@ -39,6 +39,7 @@
 \addbibresource{example-bookinproceedings.bib}
 \addbibresource{example-bookinthesis.bib}
 \addbibresource{example-bookininbook.bib}
+\addbibresource{example-bookininarticle.bib}
 \begin{document}
 
 \printtitlepage
@@ -183,6 +184,7 @@ Use the \pkg{biblatex-morenames} package to add this field to the style of \bibt
   This is a more specific variant of \bibtype{bookincollection}.
   The standard styles will treat this entry type as an alias for \bibtype{bookincollection}.
   }}},%
+  {{inarticle}{Crusius1891_txt}{}},%
   {{inbook}{Laudo}{\unexpanded{We use the \emph{biblatex-anonymous} package to manage the anonymous entry here.}}},
   {{incollection}{AcTiteLatin}{%
   \unexpanded{\subsubsection{About \bibtype{bookininreference}}
@@ -221,7 +223,8 @@ The ways new entry types are printed are derived from the \verb+standard.bbx+ bi
 
 \begin{release}{2.2.0}{2016-09-08}
   \item Add compatibility with \emph{biblatex-opcit-booktitle} package's mechanism.
-  \item Add \bibtype{bookininbook} and \bibtype{ininbook} entrytype.
+  \item Add \bibtype{bookininarticle} and \bibtype{ininarticle} entrytypes.
+  \item Add \bibtype{bookininbook} and \bibtype{ininbook} entrytypes.
   \item Use \cs{printdelim}\verb+{nametitledelim}+ instead of directly  calling \cs{labelnamepunct}.
 \end{release}
 
