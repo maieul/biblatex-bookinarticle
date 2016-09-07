@@ -62,6 +62,64 @@
   \setunit{\bibpagerefpunct}\newblock
   \usebibmacro{pageref}%
   \usebibmacro{finentry}}
+  
+
+\DeclareBibliographyDriver{ininbook}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{author/translator+others}%
+  \setunit{\labelnamepunct}\newblock
+  \printfield{title}\usebibmacro{title}%
+  \printlist{language}%
+  \newunit\newblock
+  \usebibmacro{byauthor}%
+  \newunit
+  \usebibmacro{bybookineditor}%
+  \newunit\newblock
+  \usebibmacro{in:}%
+  \usebibmacro{bybookauthor}%
+  \setunit{\labelnamepunct}\newblock
+  \usebibmacro{booktitle}%
+  \newunit
+  \newunit\newblock
+  \usebibmacro{byauthor}%
+  \newunit\newblock
+  \usebibmacro{in:}%
+  \usebibmacro{maintitle}%
+  \newunit\newblock
+  \usebibmacro{byeditor+others}%
+  \newunit\newblock
+  \printfield{edition}%
+  \newunit
+  \printfield{volume}%
+  \printfield{part}%
+  \newunit
+  \printfield{volumes}%
+  \newunit\newblock
+  \usebibmacro{series+number}%
+  \newunit\newblock
+  \printfield{note}%
+  \newunit\newblock
+  \usebibmacro{publisher+location+date}%
+  \newunit\newblock
+  \usebibmacro{chapter+pages}%
+  \newunit\newblock
+  \iftoggle{bbx:isbn}
+    {\printfield{isbn}}
+    {}%
+  \newunit\newblock
+  \usebibmacro{doi+eprint+url}%
+  \newunit\newblock
+  \usebibmacro{addendum+pubstate}%
+  \setunit{\bibpagerefpunct}\newblock
+  \usebibmacro{pageref}%
+  \newunit\newblock
+  \iftoggle{bbx:related}
+    {\usebibmacro{related:init}%
+     \usebibmacro{related}}
+    {}%
+  \usebibmacro{finentry}}
+
 
 \DeclareBibliographyDriver{inincollection}{%
   \usebibmacro{bibindex}%
@@ -247,6 +305,7 @@
 \DeclareBibliographyAlias{bookinreference}{incollection}
 \DeclareBibliographyAlias{bookininreference}{inincollection}
 \DeclareBibliographyAlias{bookinthesis}{inthesis}
+\DeclareBibliographyAlias{bookininbook}{ininbook}
 
 \DeclareStyleSourcemap{
  \maps[datatype=bibtex]{
@@ -332,7 +391,9 @@
   ininproceedings,%
   ininreference,%
   inthesis,%
+  ininbook,
   ]{title}{\mkbibquote{#1\isdot}}
+
 \DeclareFieldFormat[%
    inincollection,%
    bookinincollection,%
@@ -342,7 +403,10 @@
    bookininproceedings,%
    ininreference,%
    bookininreference,%
+   ininbook,%
+   bookininbook,%
    ]{booktitle}{\mkbibquote{#1\isdot}}
+
 \DeclareFieldFormat[inarticle,bookinarticle]{maintitle}{\mkbibquote{#1\isdot}}
 
 % Inspired from biblatex.def
@@ -377,7 +441,12 @@
   \noinherit{indexsorttitle}
 }
 
-\DeclareDataInheritance{inproceedings,incollection,inreference}{bookinincollection,inincollection,bookininproceedings,inproceedings,ininreference,bookininreference}{
+\DeclareDataInheritance{inproceedings,incollection,inreference,inbook}{%
+  bookinincollection,inincollection,%
+  bookininproceedings,inproceedings,%
+  ininreference,bookininreference,%
+  bookininbook,ininbook%
+  }{%
 	\inherit{author}{bookauthor}%
 	\inherit{title}{booktitle}%
 	\inherit{subtitle}{booksubtitle}%
@@ -427,7 +496,8 @@
   bookinreference,%
   bookinthesis,%
   bookinphdthesis,%
-  bookinmathesis
+  bookinmathesis,
+  bookininbook
   ]{%
   \field{shortauthor}
   \field{author}
@@ -469,5 +539,8 @@
 
 \listadd\opcit@booktitle@entrytypes{ininreference}
 \listadd\opcit@booktitle@entrytypes{bookininreference}
+
+\listadd\opcit@booktitle@entrytypes{ininbook}
+\listadd\opcit@booktitle@entrytypes{bookininbook}
 
 \endinput
