@@ -420,14 +420,16 @@
 
 
 % 3.b.iii Declare Bibmacro
-\newbibmacro*{bybookineditor}{%
-  \ifnameundef{bookineditor}
-    {}
-    {\usebibmacro{bytypestrg}{bookineditor}{editor}%
-     \setunit{\addspace}%
-     \printnames[byeditor]{bookineditor}%
-     \newunit}%
-  }
+\ifdefined\abx@macro@bybookineditor\else%
+  \newbibmacro*{bybookineditor}{%
+    \ifnameundef{bookineditor}
+      {}
+      {\usebibmacro{bytypestrg}{bookineditor}{editor}%
+       \setunit{\addspace}%
+       \printnames[byeditor]{bookineditor}%
+       \newunit}%
+    }%
+\fi%
 
 % 3.c Mainauthor
 
