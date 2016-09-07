@@ -41,7 +41,8 @@
   inarticle,
   bookinincollection,bookininproceedings,bookininreference,%
   inincollection,ininproceedings,ininreference,%
-  bookinjournal%
+  bookinjournal,%
+  ininbook,bookininbook%
   ]{%
   bookineditor
 }
