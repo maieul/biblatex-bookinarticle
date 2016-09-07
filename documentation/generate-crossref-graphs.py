@@ -36,7 +36,7 @@ for file_name in directory_files:
     # generate the .bcf, .dot and .pdf file
     os.system("pdflatex " + basename)
     os.system("biber -output-format=dot --dot-include=crossref,field " + basename)
-    os.system("dot -Tpdf " + basename + ".dot " + "-o " + basename + ".pdf")
+    os.system("dot -Gsplines=polyline -Tpdf " + basename + ".dot " + "-o " + basename + ".pdf")
 
     # delete the temporary files, to avoid distributing it and to have cleaner folder
     for ext in ["aux","bcf","blg","log","run.xml","tex"]:
