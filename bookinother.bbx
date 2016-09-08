@@ -14,7 +14,7 @@
 %0. Preamble
 
 \ProvidesFile{bookinother.bbx}
-[2016/06/16 v2.1.1 biblatex bibliography style to have entry type for book edited in other entry type (MR)]
+[2016/09/08 v2.2.0 biblatex bibliography style to have entry type for book edited in other entry type (MR)]
 
 \RequireBiber
 \RequirePackage{xpatch}
@@ -24,12 +24,12 @@
 
 
 
-% 1. The drivers
+% 1. The drivers for new entrytype
 \DeclareBibliographyDriver{inarticle}{%
   \usebibmacro{bibindex}%
   \usebibmacro{begentry}%
   \usebibmacro{author/translator+others}%
-  \setunit{\labelnamepunct}\newblock%
+  \setunit{\printdelim{nametitledelim}}\newblock%
   \usebibmacro{title}%
   \newunit
   \printlist{language}%
@@ -40,7 +40,7 @@
   \newunit\newblock
   \usebibmacro{in:}%
   \usebibmacro{bybookauthor}%
-  \setunit{\labelnamepunct}\newblock
+  \setunit{\printdelim{nametitledelim}}\newblock
   \usebibmacro{maintitle}%
   \newunit\newblock
   \usebibmacro{bybookeditor}%
@@ -62,12 +62,13 @@
   \setunit{\bibpagerefpunct}\newblock
   \usebibmacro{pageref}%
   \usebibmacro{finentry}}
+ 
 
-\DeclareBibliographyDriver{inincollection}{%
+\DeclareBibliographyDriver{ininarticle}{%
   \usebibmacro{bibindex}%
   \usebibmacro{begentry}%
   \usebibmacro{author/translator+others}%
-  \setunit{\labelnamepunct}\newblock%
+  \setunit{\printdelim{nametitledelim}}\newblock%
   \usebibmacro{title}%
   \newunit
   \printlist{language}%
@@ -78,7 +79,111 @@
   \newunit\newblock
   \usebibmacro{in:}%
   \usebibmacro{bybookauthor}%
-  \setunit{\labelnamepunct}\newblock
+  \setunit{\printdelim{nametitledelim}}\newblock
+  \usebibmacro{booktitle}%
+  \newunit\newblock
+  \usebibmacro{in:}%
+  \usebibmacro{bymainauthor}%
+  \setunit{\printdelim{nametitledelim}}\newblock
+  \usebibmacro{maintitle}%
+  \newunit\newblock
+  \usebibmacro{bybookeditor}%
+  \newunit\newblock
+  \usebibmacro{in:}%
+  \usebibmacro{journal+issuetitle}%
+  \newunit
+  \usebibmacro{byeditor+others}%
+  \newunit
+  \usebibmacro{note+pages}%
+  \newunit\newblock
+  \iftoggle{bbx:isbn}
+    {\printfield{issn}}
+    {}%
+  \newunit\newblock
+  \usebibmacro{doi+eprint+url}%
+  \newunit\newblock
+  \usebibmacro{addendum+pubstate}%
+  \setunit{\bibpagerefpunct}\newblock
+  \usebibmacro{pageref}%
+  \usebibmacro{finentry}}
+   
+
+
+\DeclareBibliographyDriver{ininbook}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{author/translator+others}%
+  \setunit{\printdelim{nametitledelim}}\newblock
+  \printfield{title}%
+  \printlist{language}%
+  \newunit\newblock
+  \usebibmacro{byauthor}%
+  \newunit
+  \usebibmacro{bybookineditor}%
+  \newunit\newblock
+  \usebibmacro{in:}%
+  \usebibmacro{bybookauthor}%
+  \setunit{\printdelim{nametitledelim}}\newblock
+  \usebibmacro{booktitle}%
+  \newunit
+  \newunit\newblock
+  \usebibmacro{byauthor}%
+  \newunit\newblock
+  \usebibmacro{in:}%
+  \usebibmacro{bymainauthor}%
+  \setunit{\printdelim{nametitledelim}}\newblock
+  \usebibmacro{maintitle}%
+  \newunit\newblock
+  \usebibmacro{byeditor+others}%
+  \newunit\newblock
+  \printfield{edition}%
+  \newunit
+  \printfield{volume}%
+  \printfield{part}%
+  \newunit
+  \printfield{volumes}%
+  \newunit\newblock
+  \usebibmacro{series+number}%
+  \newunit\newblock
+  \printfield{note}%
+  \newunit\newblock
+  \usebibmacro{publisher+location+date}%
+  \newunit\newblock
+  \usebibmacro{chapter+pages}%
+  \newunit\newblock
+  \iftoggle{bbx:isbn}
+    {\printfield{isbn}}
+    {}%
+  \newunit\newblock
+  \usebibmacro{doi+eprint+url}%
+  \newunit\newblock
+  \usebibmacro{addendum+pubstate}%
+  \setunit{\bibpagerefpunct}\newblock
+  \usebibmacro{pageref}%
+  \newunit\newblock
+  \iftoggle{bbx:related}
+    {\usebibmacro{related:init}%
+     \usebibmacro{related}}
+    {}%
+  \usebibmacro{finentry}}
+
+
+\DeclareBibliographyDriver{inincollection}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{author/translator+others}%
+  \setunit{\printdelim{nametitledelim}}\newblock%
+  \usebibmacro{title}%
+  \newunit
+  \printlist{language}%
+  \newunit\newblock
+  \usebibmacro{byauthor}%
+  \newunit
+  \usebibmacro{bybookineditor}%
+  \newunit\newblock
+  \usebibmacro{in:}%
+  \usebibmacro{bybookauthor}%
+  \setunit{\printdelim{nametitledelim}}\newblock
   \usebibmacro{booktitle}%
   \newunit
   \printlist{language}%
@@ -128,7 +233,7 @@
   \usebibmacro{bibindex}%
   \usebibmacro{begentry}%
   \usebibmacro{author/translator+others}%
-  \setunit{\labelnamepunct}\newblock%
+  \setunit{\printdelim{nametitledelim}}\newblock%
   \usebibmacro{title}%
   \newunit
   \printlist{language}%
@@ -139,7 +244,7 @@
   \newunit\newblock
   \usebibmacro{in:}%  
   \usebibmacro{bybookauthor}%
-  \setunit{\labelnamepunct}\newblock
+  \setunit{\printdelim{nametitledelim}}\newblock
   \usebibmacro{booktitle}%
   \newunit
   \printlist{language}%
@@ -196,7 +301,7 @@
   \usebibmacro{bibindex}%
   \usebibmacro{begentry}%
   \usebibmacro{author}%
-  \setunit{\labelnamepunct}\newblock
+  \setunit{\printdelim{nametitledelim}}\newblock
   \usebibmacro{title}%
   \newunit
   \printlist{language}%
@@ -207,7 +312,7 @@
   \newunit\newblock
   \usebibmacro{in:}%
   \usebibmacro{bybookauthor}%
-  \setunit{\labelnamepunct}\newblock
+  \setunit{\printdelim{nametitledelim}}\newblock
   \usebibmacro{booktitle}%
   \newunit\newblock
   \printfield{note}%
@@ -247,6 +352,8 @@
 \DeclareBibliographyAlias{bookinreference}{incollection}
 \DeclareBibliographyAlias{bookininreference}{inincollection}
 \DeclareBibliographyAlias{bookinthesis}{inthesis}
+\DeclareBibliographyAlias{bookininbook}{ininbook}
+\DeclareBibliographyAlias{bookininarticle}{ininarticle}
 
 \DeclareStyleSourcemap{
  \maps[datatype=bibtex]{
@@ -285,8 +392,10 @@
 
 % 3.b Booinkeditor
 
+% 3.b.i Tools for patching
 \newcommand{\bookinother@patch@failed}[1]{\PackageError{bookinother}{Unable to patch #1 driver}}
 
+% 3.b.ii Patch standard drivers
 \xpatchbibdriver{incollection}%
   {\usebibmacro{byauthor}}
   {\usebibmacro{byauthor}\newunit\usebibmacro{bybookineditor}}
@@ -299,14 +408,6 @@
   {}
   {\bookinother@patch@failed{inproceedings}}
 
-\newbibmacro*{bybookineditor}{%
-  \ifnameundef{bookineditor}
-    {}
-    {\usebibmacro{bytypestrg}{bookineditor}{editor}%
-     \setunit{\addspace}%
-     \printnames[byeditor]{bookineditor}%
-     \newunit}%
-  }
 
 \xpatchbibdriver{article}%
   {\usebibmacro{byauthor}}
@@ -318,6 +419,34 @@
   {}
   {\bookinother@patch@failed{article}} 
 
+
+
+% 3.b.iii Declare Bibmacro
+\ifdefined\abx@macro@bybookineditor\else%
+  \newbibmacro*{bybookineditor}{%
+    \ifnameundef{bookineditor}
+      {}%
+      {\usebibmacro{bytypestrg}{bookineditor}{editor}%
+       \setunit{\addspace}%
+       \printnames[byeditor]{bookineditor}%
+       \newunit%
+       \ifnamesequal{bookineditor}{editor}%
+        {\clearname{editor}}%
+        {}%
+      }%
+    }%
+\fi%
+
+% 3.c Mainauthor
+
+\DeclareNameAlias{mainauthor}{bookauthor}
+\DeclareNameAlias{bymainauthor}{bybookauthor}
+
+\newbibmacro*{bymainauthor}{%
+  \ifnamesequal{mainauthor}{bookauthor}
+    {}
+    {\printnames{mainauthor}}}
+
 % 4. The formats for classical fields
 
 \DeclareFieldFormat[%
@@ -326,7 +455,9 @@
   ininproceedings,%
   ininreference,%
   inthesis,%
+  ininbook,
   ]{title}{\mkbibquote{#1\isdot}}
+
 \DeclareFieldFormat[%
    inincollection,%
    bookinincollection,%
@@ -336,8 +467,18 @@
    bookininproceedings,%
    ininreference,%
    bookininreference,%
+   ininbook,%
+   bookininbook,%
+   ininarticle,%
+   bookininarticle%
    ]{booktitle}{\mkbibquote{#1\isdot}}
-\DeclareFieldFormat[inarticle,bookinarticle]{maintitle}{\mkbibquote{#1\isdot}}
+
+\DeclareFieldFormat[%
+  inarticle,bookinarticle,%
+  ininarticle,bookininarticle%
+  ]{maintitle}{\mkbibquote{#1\isdot}}
+
+
 
 % Inspired from biblatex.def
 \DeclareFieldFormat[inarticle,bookinarticle]{series}{% series of a journal
@@ -354,6 +495,7 @@
 	\inherit{ineditor}{bookeditor}%
 	\inherit{title}{maintitle}%
 	\inherit{subtitle}{mainsubtitle}%
+	\inherit{titleaddon}{maintitleaddon}%
   \noinherit{shorttitle}
   \noinherit{sorttitle}
   \noinherit{indextitle}
@@ -371,10 +513,23 @@
   \noinherit{indexsorttitle}
 }
 
-\DeclareDataInheritance{inproceedings,incollection,inreference}{bookinincollection,inincollection,bookininproceedings,inproceedings,ininreference,bookininreference}{
+\DeclareDataInheritance%
+  {inproceedings,
+   incollection,
+   inreference,
+   inbook,
+  }%
+  {%
+  bookinincollection,inincollection,%
+  bookininproceedings,inproceedings,%
+  ininreference,bookininreference,%
+  bookininbook,ininbook,%
+  }{%
 	\inherit{author}{bookauthor}%
 	\inherit{title}{booktitle}%
 	\inherit{subtitle}{booksubtitle}%
+	\inherit{titleaddon}{booktitleaddon}%
+	\inherit{bookauthor}{mainauthor}%
 	\inherit{booktitle}{maintitle}%
 	\inherit{booksubtitle}{mainsubtitle}%
 	\inherit{booktitleaddon}{maintitleaddon}%
@@ -405,8 +560,20 @@
   \noinherit{indexsorttitle}
 }
 
-
-
+\DeclareDataInheritance{inarticle}{bookininarticle,ininarticle}{%
+	\inherit{author}{bookauthor}%
+	\inherit{bookauthor}{mainauthor}%
+	\inherit{title}{booktitle}%
+	\inherit{subtitle}{booksubtitle}%
+	\inherit{titleaddon}{booktitleaddon}%
+	\inherit{booktitle}{maintitle}%
+	\inherit{booksubtitle}{mainsubtitle}%
+	\inherit{booktitleaddon}{maintitleaddon}%
+  \noinherit{shorttitle}
+  \noinherit{sorttitle}
+  \noinherit{indextitle}
+  \noinherit{indexsorttitle}
+}
 
 % 6. Label name
 
@@ -421,11 +588,55 @@
   bookinreference,%
   bookinthesis,%
   bookinphdthesis,%
-  bookinmathesis
+  bookinmathesis,
+  bookininbook
+  bookininarticle
   ]{%
   \field{shortauthor}
   \field{author}
   \field{ineditor}
   \field{bookineditor}
 }
+
+% 7. Pour biblatex-bookinother
+
+\listadd\opcit@booktitle@entrytypes{inarticle}
+\listadd\opcit@booktitle@entrytypes{bookinarticle}
+
+\listadd\opcit@booktitle@entrytypes{inincollection}
+\listadd\opcit@booktitle@entrytypes{bookinincollection}
+
+\listadd\opcit@booktitle@entrytypes{ininproceedings}
+\listadd\opcit@booktitle@entrytypes{bookininproceedings}
+
+\listadd\opcit@booktitle@entrytypes{ininreference}
+\listadd\opcit@booktitle@entrytypes{bookininreference}
+
+\listadd\opcit@booktitle@entrytypes{inthesis}
+\listadd\opcit@booktitle@entrytypes{bookinthesis}
+
+\listadd\opcit@booktitle@entrytypes{inphdthesis}
+\listadd\opcit@booktitle@entrytypes{bookphdinthesis}
+
+\listadd\opcit@booktitle@entrytypes{inmathesis}
+\listadd\opcit@booktitle@entrytypes{bookinmathesis}
+
+\listadd\opcit@booktitle@entrytypes{inincollection}
+\listadd\opcit@booktitle@entrytypes{bookinincollection}
+
+\listadd\opcit@booktitle@entrytypes{inthesis}
+\listadd\opcit@booktitle@entrytypes{bookinthesis}
+
+\listadd\opcit@booktitle@entrytypes{ininproceedings}
+\listadd\opcit@booktitle@entrytypes{bookininproceedings}
+
+\listadd\opcit@booktitle@entrytypes{ininreference}
+\listadd\opcit@booktitle@entrytypes{bookininreference}
+
+\listadd\opcit@booktitle@entrytypes{ininbook}
+\listadd\opcit@booktitle@entrytypes{bookininbook}
+
+\listadd\opcit@booktitle@entrytypes{ininarticle}
+\listadd\opcit@booktitle@entrytypes{bookininarticle}
+
 \endinput

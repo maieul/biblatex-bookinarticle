@@ -24,8 +24,8 @@
 	subtitle={New data types},
 	email={maieul <at> maieul <dot> net},
 	author={Maïeul Rouquette},
-	revision={2.1.1},
-	date={16/06/2016},
+	revision={2.2.0},
+	date={08/09/2016},
 	url={https://github.com/maieul/biblatex-bookinarticle}}
 
 % biblatex
@@ -38,6 +38,8 @@
 \addbibresource{example-bookinjournal.bib}
 \addbibresource{example-bookinproceedings.bib}
 \addbibresource{example-bookinthesis.bib}
+\addbibresource{example-bookininbook.bib}
+\addbibresource{example-bookininarticle.bib}
 \begin{document}
 
 \printtitlepage
@@ -72,10 +74,15 @@ The package provides:
   \item Inheritance's mechanism for these entry types. 
   \item Integration of the entry types following the standard bibliography's styles of biblatex. 
   \item Integration of the new fields of the \pkg{biblatex-morenames} package.
+  \item New fields when required and not defined in \pkg{biblatex-morenames} package.
 \end{itemize}
 
 
 \section{Loading package}
+
+The package requires \emph{biblatex} 3.4 or later.
+ 
+
 As the package defines new fields, you must load it as a \verb+bibstyle+ option of \biblatex package.
  
 \begin{minted}{latex}
@@ -121,7 +128,7 @@ In the following parts of this handbook, we will describe, for each entry type, 
 Here is a list of fields which are NOT inherited :
 \begin{itemize}
   \item \bibfield{author} means the author of the edited (ancient) book.
-  \item \bibfield{bookineditor} means the editor of the edited (ancient) book.
+  \item \bibfield{bookineditor} means the editor of the edited (ancient) book. If this field is equal to the \bibfield{editor} field, the last one is not printed.
   \item \bibfield{title} means the title of the edited (ancient) book.
   \item \bibfield{subtitle} means the subtitle of the edited (ancient) book.
  
@@ -144,7 +151,7 @@ Use the \pkg{biblatex-morenames} package to add this field to the style of \bibt
   \edef\entrytype{\firstofthree#1}%
   \edef\entrykey{\secondofthree#1}%
   \edef\entrymore{\thirdofthree#1}%
-  \subsection{\bibtype{bookin\entrytype}}
+  \newpage\subsection{\bibtype{bookin\entrytype}}
   \subsubsection{Meaning}
   For book edited in a \bibtype{\entrytype} entry.
   \subsubsection{.bib example}
@@ -178,6 +185,8 @@ Use the \pkg{biblatex-morenames} package to add this field to the style of \bibt
   This is a more specific variant of \bibtype{bookincollection}.
   The standard styles will treat this entry type as an alias for \bibtype{bookincollection}.
   }}},%
+  {{inarticle}{Cohn1891_txt}{}},%
+  {{inbook}{Laudo}{\unexpanded{We use the \emph{biblatex-anonymous} package to manage the anonymous entry here.}}},
   {{incollection}{AcTiteLatin}{%
   \unexpanded{\subsubsection{About \bibtype{bookininreference}}
   The package also provides a \bibtype{bookininreference} entry type for book edited in a \bibtype{inreference}.
@@ -201,7 +210,7 @@ Use the \pkg{biblatex-morenames} package to add this field to the style of \bibt
     \item \bibtype{bookinmathesis} for book edited in a \bibtype{mathesis};
     \item \bibtype{bookinphdthesis} for book edited in a \bibtype{phdthesis}.
   \end{itemize}
-  }}}%
+  }}},%
 }
 \section{Customization}
 
@@ -211,6 +220,17 @@ The ways new entry types are printed are derived from the \verb+standard.bbx+ bi
 
 
 \begin{changelog}
+
+
+\begin{release}{2.2.0}{2016-09-08}
+  \item Add compatibility with \emph{biblatex-opcit-booktitle} package's mechanism.
+  \item Add \bibtype{bookininarticle} and \bibtype{ininarticle} entrytypes.
+  \item Add \bibtype{bookininbook} and \bibtype{ininbook} entrytypes.
+  \item Use \cs{printdelim}\verb+{nametitledelim}+ instead of directly  calling \cs{labelnamepunct}.
+  \item Don't define again \verb+bybookineditor+ macro if already defined by \emph{biblatex-morenames}.
+  \item Fix bug with inheritance of \bibfield{titleaddon} and related field.
+  \item If the \bibfield{bookineditor} or \bibfield{ineditor} field is equal to the\bibfield{editor} field, the last one is not printed.
+\end{release}
 
 \begin{release}{2.1.1}{2016-06-16}
   \item Use \cs{DeclareStyleSourceMap} instead of \cs{DeclareSourceMap}.
