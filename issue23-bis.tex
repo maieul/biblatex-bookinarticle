@@ -2,38 +2,40 @@
     \usepackage[tools={bookinother,morenames},bibstyle=verbose]{biblatex-multiple-dm}
     \usepackage{filecontents}
     \begin{filecontents}{\jobname.bib}
-@Collection{Duebner1878,
+@Book{Duebner1878,
   author    = {Dübner, F. and Bussemaker, U. Cats},
-  booktitle = {Scholia in Theocritum, Nicandrum et Oppianum},
+  title = {Scholia in Theocritum, Nicandrum et Oppianum},
   location  = {Parisiis},
   publisher = {Editore Ambrosio Firmin--Didot},
   year      = {1878},
 }
 
-@Incollection{Bussemaker1878,
+@Inbook{Bussemaker1878,
   author     = {Bussemaker, U. Cats},
   title      = {Scholia et Paraphrases in Nicandrum et Oppianum},
-  year       = {1878},
   pages      = {243--364},
   crossref   = {Duebner1878},
   titleaddon = {Partim nunc primum edidit, partim collatis cod. mss. emendavit, annotatione critica instruxit et indices confecit},
 }
 
-@Bookinincollection{ScholiainOppianum1878,
+@Bookininbook{ScholiainOppianum1878,
   author    = {{Scholia~in~Oppianum}},
   title     = {In Halieutica},
   pages     = {260--364},
-  year      = {1878},
   crossref  = {Bussemaker1878},
 }
 
     \end{filecontents}
-    \usepackage[bibstyle=multiple-dm]{biblatex}
+    \usepackage[bibstyle=multiple-dm,citestyle=verbose]{biblatex}
     \usepackage{libertineotf}
     \usepackage{biblatex-anonymous}
     \bibliography{\jobname.bib}
     \begin{document}
-    \nocite{*}
+    \cite{Duebner1878}
+    
+    \cite{Bussemaker1878}
+    
+    \cite{ScholiainOppianum1878}
     
     \printbibliography
     \end{document}
