@@ -130,6 +130,8 @@
   \usebibmacro{byauthor}%
   \newunit\newblock
   \usebibmacro{in:}%
+  \usebibmacro{bymainauthor}%
+  \setunit{\printdelim{nametitledelim}}\newblock
   \usebibmacro{maintitle}%
   \newunit\newblock
   \usebibmacro{byeditor+others}%
@@ -527,6 +529,7 @@
 	\inherit{title}{booktitle}%
 	\inherit{subtitle}{booksubtitle}%
 	\inherit{titleaddon}{booktitleaddon}%
+	\inherit{bookauthor}{mainauthor}%
 	\inherit{booktitle}{maintitle}%
 	\inherit{booksubtitle}{mainsubtitle}%
 	\inherit{booktitleaddon}{maintitleaddon}%
