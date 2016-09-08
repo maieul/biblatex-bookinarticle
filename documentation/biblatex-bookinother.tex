@@ -128,7 +128,7 @@ In the following parts of this handbook, we will describe, for each entry type, 
 Here is a list of fields which are NOT inherited :
 \begin{itemize}
   \item \bibfield{author} means the author of the edited (ancient) book.
-  \item \bibfield{bookineditor} means the editor of the edited (ancient) book.
+  \item \bibfield{bookineditor} means the editor of the edited (ancient) book. If this field is equal to the \bibfield{editor} field, the last one is not printed.
   \item \bibfield{title} means the title of the edited (ancient) book.
   \item \bibfield{subtitle} means the subtitle of the edited (ancient) book.
  
@@ -229,6 +229,7 @@ The ways new entry types are printed are derived from the \verb+standard.bbx+ bi
   \item Use \cs{printdelim}\verb+{nametitledelim}+ instead of directly  calling \cs{labelnamepunct}.
   \item Don't define again \verb+bybookineditor+ macro if already defined by \emph{biblatex-morenames}.
   \item Fix bug with inheritance of \bibfield{titleaddon} and related field.
+  \item If the \bibfield{bookineditor} or \bibfield{ineditor} field is equal to the\bibfield{editor} field, the last one is not printed.
 \end{release}
 
 \begin{release}{2.1.1}{2016-06-16}

@@ -423,11 +423,15 @@
 \ifdefined\abx@macro@bybookineditor\else%
   \newbibmacro*{bybookineditor}{%
     \ifnameundef{bookineditor}
-      {}
+      {}%
       {\usebibmacro{bytypestrg}{bookineditor}{editor}%
        \setunit{\addspace}%
        \printnames[byeditor]{bookineditor}%
-       \newunit}%
+       \newunit%
+       \ifnamesequal{bookineditor}{editor}%
+        {\clearname{editor}}%
+        {}%
+      }%
     }%
 \fi%
 
