@@ -8,78 +8,71 @@ digraph Biberdata {
     style=filled,
     shape=box ];
 
-  subgraph "cluster_section0/Laudo" {
+  subgraph "cluster_section0/Bussemaker1878" {
     fontsize="10";
-    label="Laudo (BOOKININBOOK)";
-    tooltip="Laudo (BOOKININBOOK)";
+    label="Bussemaker1878 (INBOOK)";
+    tooltip="Bussemaker1878 (INBOOK)";
     fillcolor="#a0d0ff";
 
-    "section0/Laudo/bookauthor" [ label="BOOKAUTHOR" ]
-    "section0/Laudo/booktitle" [ label="BOOKTITLE" ]
-    "section0/Laudo/crossref" [ label="CROSSREF" ]
-    "section0/Laudo/location" [ label="LOCATION" ]
-    "section0/Laudo/maintitle" [ label="MAINTITLE" ]
-    "section0/Laudo/origyear" [ label="ORIGYEAR" ]
-    "section0/Laudo/pages" [ label="PAGES" ]
-    "section0/Laudo/publisher" [ label="PUBLISHER" ]
-    "section0/Laudo/title" [ label="TITLE" ]
-    "section0/Laudo/volume" [ label="VOLUME" ]
-    "section0/Laudo/volumes" [ label="VOLUMES" ]
-    "section0/Laudo/year" [ label="YEAR" ]
+    "section0/Bussemaker1878/author" [ label="AUTHOR" ]
+    "section0/Bussemaker1878/bookauthor" [ label="BOOKAUTHOR" ]
+    "section0/Bussemaker1878/booktitle" [ label="BOOKTITLE" ]
+    "section0/Bussemaker1878/crossref" [ label="CROSSREF" ]
+    "section0/Bussemaker1878/location" [ label="LOCATION" ]
+    "section0/Bussemaker1878/pages" [ label="PAGES" ]
+    "section0/Bussemaker1878/publisher" [ label="PUBLISHER" ]
+    "section0/Bussemaker1878/title" [ label="TITLE" ]
+    "section0/Bussemaker1878/titleaddon" [ label="TITLEADDON" ]
+    "section0/Bussemaker1878/year" [ label="YEAR" ]
   }
 
-  subgraph "cluster_section0/Mercati1922" {
+  subgraph "cluster_section0/Duebner1878" {
     fontsize="10";
-    label="Mercati1922 (INBOOK)";
-    tooltip="Mercati1922 (INBOOK)";
+    label="Duebner1878 (BOOK)";
+    tooltip="Duebner1878 (BOOK)";
     fillcolor="#a0d0ff";
 
-    "section0/Mercati1922/author" [ label="AUTHOR" ]
-    "section0/Mercati1922/bookauthor" [ label="BOOKAUTHOR" ]
-    "section0/Mercati1922/crossref" [ label="CROSSREF" ]
-    "section0/Mercati1922/entrysubtype" [ label="ENTRYSUBTYPE" ]
-    "section0/Mercati1922/location" [ label="LOCATION" ]
-    "section0/Mercati1922/maintitle" [ label="MAINTITLE" ]
-    "section0/Mercati1922/origyear" [ label="ORIGYEAR" ]
-    "section0/Mercati1922/pages" [ label="PAGES" ]
-    "section0/Mercati1922/publisher" [ label="PUBLISHER" ]
-    "section0/Mercati1922/title" [ label="TITLE" ]
-    "section0/Mercati1922/volume" [ label="VOLUME" ]
-    "section0/Mercati1922/volumes" [ label="VOLUMES" ]
-    "section0/Mercati1922/year" [ label="YEAR" ]
+    "section0/Duebner1878/author" [ label="AUTHOR" ]
+    "section0/Duebner1878/location" [ label="LOCATION" ]
+    "section0/Duebner1878/publisher" [ label="PUBLISHER" ]
+    "section0/Duebner1878/title" [ label="TITLE" ]
+    "section0/Duebner1878/year" [ label="YEAR" ]
   }
 
-  subgraph "cluster_section0/Mercati1970" {
+  subgraph "cluster_section0/ScholiainOppianum1878" {
     fontsize="10";
-    label="Mercati1970 (MVBOOK)";
-    tooltip="Mercati1970 (MVBOOK)";
+    label="ScholiainOppianum1878 (BOOKININBOOK)";
+    tooltip="ScholiainOppianum1878 (BOOKININBOOK)";
     fillcolor="#a0d0ff";
 
-    "section0/Mercati1970/author" [ label="AUTHOR" ]
-    "section0/Mercati1970/location" [ label="LOCATION" ]
-    "section0/Mercati1970/publisher" [ label="PUBLISHER" ]
-    "section0/Mercati1970/title" [ label="TITLE" ]
-    "section0/Mercati1970/volumes" [ label="VOLUMES" ]
-    "section0/Mercati1970/year" [ label="YEAR" ]
+    "section0/ScholiainOppianum1878/author" [ label="AUTHOR" ]
+    "section0/ScholiainOppianum1878/bookauthor" [ label="BOOKAUTHOR" ]
+    "section0/ScholiainOppianum1878/booktitle" [ label="BOOKTITLE" ]
+    "section0/ScholiainOppianum1878/booktitleaddon" [ label="BOOKTITLEADDON" ]
+    "section0/ScholiainOppianum1878/crossref" [ label="CROSSREF" ]
+    "section0/ScholiainOppianum1878/location" [ label="LOCATION" ]
+    "section0/ScholiainOppianum1878/mainauthor" [ label="MAINAUTHOR" ]
+    "section0/ScholiainOppianum1878/maintitle" [ label="MAINTITLE" ]
+    "section0/ScholiainOppianum1878/pages" [ label="PAGES" ]
+    "section0/ScholiainOppianum1878/publisher" [ label="PUBLISHER" ]
+    "section0/ScholiainOppianum1878/title" [ label="TITLE" ]
+    "section0/ScholiainOppianum1878/year" [ label="YEAR" ]
   }
 
 
 
-  "section0/Mercati1922/author" -> "section0/Laudo/bookauthor" [ penwidth="2.0", color="#7d7879", tooltip="Laudo/BOOKAUTHOR inherited via CROSSREF from Mercati1922/AUTHOR" ]
-  "section0/Mercati1922/location" -> "section0/Laudo/location" [ penwidth="2.0", color="#7d7879", tooltip="Laudo/LOCATION inherited via CROSSREF from Mercati1922/LOCATION" ]
-  "section0/Mercati1922/maintitle" -> "section0/Laudo/maintitle" [ penwidth="2.0", color="#7d7879", tooltip="Laudo/MAINTITLE inherited via CROSSREF from Mercati1922/MAINTITLE" ]
-  "section0/Mercati1922/origyear" -> "section0/Laudo/origyear" [ penwidth="2.0", color="#7d7879", tooltip="Laudo/ORIGYEAR inherited via CROSSREF from Mercati1922/ORIGYEAR" ]
-  "section0/Mercati1922/publisher" -> "section0/Laudo/publisher" [ penwidth="2.0", color="#7d7879", tooltip="Laudo/PUBLISHER inherited via CROSSREF from Mercati1922/PUBLISHER" ]
-  "section0/Mercati1922/title" -> "section0/Laudo/booktitle" [ penwidth="2.0", color="#7d7879", tooltip="Laudo/BOOKTITLE inherited via CROSSREF from Mercati1922/TITLE" ]
-  "section0/Mercati1922/volume" -> "section0/Laudo/volume" [ penwidth="2.0", color="#7d7879", tooltip="Laudo/VOLUME inherited via CROSSREF from Mercati1922/VOLUME" ]
-  "section0/Mercati1922/volumes" -> "section0/Laudo/volumes" [ penwidth="2.0", color="#7d7879", tooltip="Laudo/VOLUMES inherited via CROSSREF from Mercati1922/VOLUMES" ]
-  "section0/Mercati1922/year" -> "section0/Laudo/year" [ penwidth="2.0", color="#7d7879", tooltip="Laudo/YEAR inherited via CROSSREF from Mercati1922/YEAR" ]
-  "section0/Mercati1970/author" -> "section0/Mercati1922/author" [ penwidth="2.0", color="#7d7879", tooltip="Mercati1922/AUTHOR inherited via CROSSREF from Mercati1970/AUTHOR" ]
-  "section0/Mercati1970/author" -> "section0/Mercati1922/bookauthor" [ penwidth="2.0", color="#7d7879", tooltip="Mercati1922/BOOKAUTHOR inherited via CROSSREF from Mercati1970/AUTHOR" ]
-  "section0/Mercati1970/location" -> "section0/Mercati1922/location" [ penwidth="2.0", color="#7d7879", tooltip="Mercati1922/LOCATION inherited via CROSSREF from Mercati1970/LOCATION" ]
-  "section0/Mercati1970/publisher" -> "section0/Mercati1922/publisher" [ penwidth="2.0", color="#7d7879", tooltip="Mercati1922/PUBLISHER inherited via CROSSREF from Mercati1970/PUBLISHER" ]
-  "section0/Mercati1970/title" -> "section0/Mercati1922/maintitle" [ penwidth="2.0", color="#7d7879", tooltip="Mercati1922/MAINTITLE inherited via CROSSREF from Mercati1970/TITLE" ]
-  "section0/Mercati1970/volumes" -> "section0/Mercati1922/volumes" [ penwidth="2.0", color="#7d7879", tooltip="Mercati1922/VOLUMES inherited via CROSSREF from Mercati1970/VOLUMES" ]
-  "section0/Mercati1970/year" -> "section0/Mercati1922/year" [ penwidth="2.0", color="#7d7879", tooltip="Mercati1922/YEAR inherited via CROSSREF from Mercati1970/YEAR" ]
+  "section0/Bussemaker1878/author" -> "section0/ScholiainOppianum1878/bookauthor" [ penwidth="2.0", color="#7d7879", tooltip="ScholiainOppianum1878/BOOKAUTHOR inherited via CROSSREF from Bussemaker1878/AUTHOR" ]
+  "section0/Bussemaker1878/bookauthor" -> "section0/ScholiainOppianum1878/mainauthor" [ penwidth="2.0", color="#7d7879", tooltip="ScholiainOppianum1878/MAINAUTHOR inherited via CROSSREF from Bussemaker1878/BOOKAUTHOR" ]
+  "section0/Bussemaker1878/booktitle" -> "section0/ScholiainOppianum1878/maintitle" [ penwidth="2.0", color="#7d7879", tooltip="ScholiainOppianum1878/MAINTITLE inherited via CROSSREF from Bussemaker1878/BOOKTITLE" ]
+  "section0/Bussemaker1878/location" -> "section0/ScholiainOppianum1878/location" [ penwidth="2.0", color="#7d7879", tooltip="ScholiainOppianum1878/LOCATION inherited via CROSSREF from Bussemaker1878/LOCATION" ]
+  "section0/Bussemaker1878/publisher" -> "section0/ScholiainOppianum1878/publisher" [ penwidth="2.0", color="#7d7879", tooltip="ScholiainOppianum1878/PUBLISHER inherited via CROSSREF from Bussemaker1878/PUBLISHER" ]
+  "section0/Bussemaker1878/title" -> "section0/ScholiainOppianum1878/booktitle" [ penwidth="2.0", color="#7d7879", tooltip="ScholiainOppianum1878/BOOKTITLE inherited via CROSSREF from Bussemaker1878/TITLE" ]
+  "section0/Bussemaker1878/titleaddon" -> "section0/ScholiainOppianum1878/booktitleaddon" [ penwidth="2.0", color="#7d7879", tooltip="ScholiainOppianum1878/BOOKTITLEADDON inherited via CROSSREF from Bussemaker1878/TITLEADDON" ]
+  "section0/Bussemaker1878/year" -> "section0/ScholiainOppianum1878/year" [ penwidth="2.0", color="#7d7879", tooltip="ScholiainOppianum1878/YEAR inherited via CROSSREF from Bussemaker1878/YEAR" ]
+  "section0/Duebner1878/author" -> "section0/Bussemaker1878/bookauthor" [ penwidth="2.0", color="#7d7879", tooltip="Bussemaker1878/BOOKAUTHOR inherited via CROSSREF from Duebner1878/AUTHOR" ]
+  "section0/Duebner1878/location" -> "section0/Bussemaker1878/location" [ penwidth="2.0", color="#7d7879", tooltip="Bussemaker1878/LOCATION inherited via CROSSREF from Duebner1878/LOCATION" ]
+  "section0/Duebner1878/publisher" -> "section0/Bussemaker1878/publisher" [ penwidth="2.0", color="#7d7879", tooltip="Bussemaker1878/PUBLISHER inherited via CROSSREF from Duebner1878/PUBLISHER" ]
+  "section0/Duebner1878/title" -> "section0/Bussemaker1878/booktitle" [ penwidth="2.0", color="#7d7879", tooltip="Bussemaker1878/BOOKTITLE inherited via CROSSREF from Duebner1878/TITLE" ]
+  "section0/Duebner1878/year" -> "section0/Bussemaker1878/year" [ penwidth="2.0", color="#7d7879", tooltip="Bussemaker1878/YEAR inherited via CROSSREF from Duebner1878/YEAR" ]
 
 }
