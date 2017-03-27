@@ -14,7 +14,7 @@
 %0. Preamble
 
 \ProvidesFile{bookinother.bbx}
-[2017/02/08 v2.2.1 biblatex bibliography style to have entry type for book edited in other entry type (MR)]
+[2017/03/27 v2.3.0 biblatex bibliography style to have entry type for book edited in other entry type (MR)]
 
 \RequireBiber
 \RequirePackage{xpatch}
@@ -602,6 +602,8 @@
 
 \listadd\opcit@booktitle@entrytypes{inarticle}
 \listadd\opcit@booktitle@entrytypes{bookinarticle}
+\listadd\opcit@booktitle@entrytypes@novolume{inarticle}
+\listadd\opcit@booktitle@entrytypes@novolume{bookinarticle}
 
 \listadd\opcit@booktitle@entrytypes{inincollection}
 \listadd\opcit@booktitle@entrytypes{bookinincollection}
@@ -638,5 +640,7 @@
 
 \listadd\opcit@booktitle@entrytypes{ininarticle}
 \listadd\opcit@booktitle@entrytypes{bookininarticle}
+\listadd\opcit@booktitle@entrytypes@novolume{ininarticle}
+\listadd\opcit@booktitle@entrytypes@novolume{bookininarticle}
 
 \endinput
