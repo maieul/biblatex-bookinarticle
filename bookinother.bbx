@@ -481,12 +481,12 @@
 
 
 % Inspired from biblatex.def
-\DeclareFieldFormat[inarticle,bookinarticle]{series}{% series of a journal
+\DeclareFieldFormat[inarticle,bookinjournal,bookinarticle]{series}{% series of a journal
   \ifinteger{#1}
     {\mkbibordseries{#1}~\bibstring{jourser}}
     {\ifbibstring{#1}{\bibstring{#1}}{#1}}}
-\DeclareFieldFormat[inarticle,bookinarticle]{volume}{#1}% volume of a journal
-\DeclareFieldFormat[inarticle,bookinarticle]{number}{#1}% number of a journal
+\DeclareFieldFormat[inarticle,bookinjournal,bookinarticle]{volume}{#1}% volume of a journal
+\DeclareFieldFormat[inarticle,bookinjournal,bookinarticle]{number}{#1}% number of a journal
 
 % 5. Inheritance
 
