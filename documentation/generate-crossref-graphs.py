@@ -34,7 +34,7 @@ for file_name in directory_files:
     tex_file_file.close()
 
     # generate the .bcf, .dot and .pdf file
-    os.system("pdflatex " + basename)
+    os.system("xelatex -no-pdf " + basename)
     os.system("biber -output-format=dot --dot-include=crossref,field " + basename)
     os.system("dot -Gsplines=polyline -Tpdf " + basename + ".dot " + "-o " + basename + ".pdf")
 
