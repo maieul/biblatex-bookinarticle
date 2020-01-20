@@ -9,11 +9,25 @@
 % version 2005/12/01 or later.
 %
 % This work has the LPPL maintenance status `maintained'.
-% 
+%
 % The Current Maintainer of this work is Maïeul Rouquette
 % This work consists of the files realauthor.dbx, realauthor.bbx
 \ProvidesFile{bookinother.dbx}
-[2017/11/19 v2.3.1 biblatex bibliography style to have entry type for book edited in other entry type (MR)]
+[2020/01/20 v2.3.2 biblatex bibliography style to have entry type for book edited in other entry type (MR)]
+
+%0. New entrytypes
+\DeclareDatamodelEntrytypes{
+  bookinarticle,
+  inarticle,
+  bookinthesis, bookinmathesis, bookinphdthesis,
+  inthesis, inmathesis, inphdthesis,
+  bookincollection, bookinproceedings, bookinreference,
+  bookinincollection, bookininproceedings, bookininreference,
+  inincollection, ininproceedings, ininreference,
+  bookinjournal,
+  ininbook, bookininbook,
+  ininarticle, bookininarticle,
+}
 
 %1. New fields
 
