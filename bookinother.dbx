@@ -48,7 +48,7 @@
   inincollection,ininproceedings,ininreference%
   ]{%
   bookeditor,
-  bookineditor
+  bookineditor,
 }
 
 \DeclareDatamodelEntryfields[
@@ -59,20 +59,20 @@
   bookinjournal,%
   ininbook,bookininbook,%
   ]{%
-  bookineditor
+  bookineditor,
 }
 \DeclareDatamodelEntryfields[%
   ininarticle,bookininarticle%
   ]{%
   bookineditor,
-  mainauthor,%
+  mainauthor,
   }
 %3. For standard entry type
 \DeclareDatamodelEntryfields[
   bookincollection,bookinproceedings,bookinreference
 ]{%
   bookeditor,
-  bookineditor
+  bookineditor,
 }
 %4. Fields declared by morenames.dbx, for bookinother entrytypes
 \DeclareDatamodelEntryfields[%
@@ -80,7 +80,7 @@
   bookinincollection,bookininproceedings,bookininreference,%
   inincollection,ininproceedings,ininreference%
   ]{
-  maineditor
+  maineditor,
 }
 
 
