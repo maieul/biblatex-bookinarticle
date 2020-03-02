@@ -13,7 +13,7 @@
 % The Current Maintainer of this work is Maïeul Rouquette
 % This work consists of the files realauthor.dbx, realauthor.bbx
 \ProvidesFile{bookinother.dbx}
-[2020/01/20 v2.3.2 biblatex bibliography style to have entry type for book edited in other entry type (MR)]
+[2020/03/02 v2.3.3 biblatex bibliography style to have entry type for book edited in other entry type (MR)]
 
 %0. New entrytypes
 \DeclareDatamodelEntrytypes{
